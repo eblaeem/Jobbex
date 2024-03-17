@@ -1,0 +1,108 @@
+<div class="section-full site-bg-white">
+  <div class="container-fluid">
+    <div class="row">
+
+      <div class="col-xl-3 col-lg-6 col-md-7">
+        <div class="twm-log-reg-form-wrap">
+          <div class="twm-log-reg-logo-head">
+            <a href="index.html">
+              <img src="../assets/images/logo-dark.png" alt="" class="logo">
+            </a>
+          </div>
+          <div class="twm-log-reg-inner">
+            <div class="twm-log-reg-head">
+              <div class="twm-log-reg-logo">
+                <h3 class="twm-error-title">ورود به سایت </h3>
+              </div>
+            </div>
+            <div class="twm-tabs-style-2">
+              <form [formGroup]="userLogin" (ngSubmit)="login()">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="form-group mb-3 ls-inputicon-box">
+                      <input name="userName" formControlName="userName" placeholder="نام کاربری" class="form-control">
+                      <i class="fs-input-icon fa fa-asterisk "></i>
+                    </div>
+                  </div>
+                  <div class="col-lg-12 ">
+                    <div class="form-group mb-3 ls-inputicon-box">
+                      <input name="password" formControlName="password" type="password" placeholder="رمز عبور" class="form-control">
+                      <i class="fs-input-icon fa fa-asterisk "></i>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                <label for="captcha">کد امنیتی</label>
+                <div class="align-items-center d-flex justify-content-between">
+                    <input class="captcha-code form-control" (focus)="clearInput('input1')" formControlName="input1Value" autocomplete="off" maxlength="1" tabindex="6" ngModel appAutoTab [libAutoTab]="206" id="206">
+                    <input class="captcha-code form-control" (focus)="clearInput('input2')" formControlName="input2Value" autocomplete="off" maxlength="1" tabindex="5" ngModel appAutoTab [libAutoTab]="205" id="205">
+                    <input class="captcha-code form-control" (focus)="clearInput('input3')" formControlName="input3Value" autocomplete="off" maxlength="1" tabindex="4" ngModel appAutoTab [libAutoTab]="204" id="204">
+                    <input class="captcha-code form-control" (focus)="clearInput('input4')" formControlName="input4Value" autocomplete="off" maxlength="1" tabindex="3" ngModel appAutoTab [libAutoTab]="203" id="203">
+                    <input class="captcha-code form-control" (focus)="clearInput('input5')" formControlName="input5Value" autocomplete="off"maxlength="1" tabindex="2" ngModel appAutoTab [libAutoTab]="202" id="202">
+                  <div class="captcha">
+                    <img alt="captcha" [src]="imgCaptcha" style="margin-bottom: 4px;">
+
+                      <a class="btn-sm" (click)="getCaptcha()">
+                        <img class="reload-icon" src="../assets/img/reload-icon.svg" />
+                      </a>
+                  </div>
+                </div>
+              </div>
+                  <!-- <div class="row col-lg-12">
+                    <div class="col-md-6 ls-inputicon-box">
+                      <input name="captcha" formControlName="captcha" placeholder="کد امنیتی" class="form-control">
+                      <i class="fs-input-icon fa fa-asterisk "></i>
+                    </div>
+                    <div class="col-md-6">
+                      <img alt="captcha" [src]="imgCaptcha" style="margin-bottom: 4px;">
+
+                      <a class="btn-sm" (click)="getCaptcha()">
+                        <img class="reload-icon" src="../assets/img/reload-icon.svg" />
+                      </a>
+                    </div>
+                  </div> -->
+
+                  <div class="col-lg-12 mt-2">
+                    <input type="checkbox" name="rememberMe" formControlName="rememberMe" class="form-check-input" id="rememberMe">
+                    <label class="form-check-label rem-forgot p-1" for="rememberMe">
+                      مرا به خاطر بسپار
+                    </label>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <button type="submit" class="login-button" (click)="login()">
+                        <i class="fa fa-lock"></i>
+                        ورود
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <hr />
+                <ul class="nav nav-tabs" id="myTab2" role="tablist">
+                  <li class="nav-item">
+                    <button class="nav-link" [routerLink]="['/register']" type="button">
+                      <i class="fa fa-plug"></i>
+                      ثبت نام
+                    </button>
+                  </li>
+                  <li class="nav-item">
+                    <button class="nav-link" [routerLink]="['/forget-password']" type="button">
+                      <i class="fa fa fa-envelope"></i>
+                      فراموشی رمز عبور
+                    </button>
+                  </li>
+                </ul>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-9 col-lg-6 col-md-5 twm-log-reg-media-wrap"
+           style="min-height: 100vh; background-image: url('/assets/images/background/2.jpg'); box-shadow: 0px 0px 10px rgba(56, 152, 226, 0.3); background-size: cover; background-position: bottom; ">
+        <div class="twm-log-reg-media" >
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

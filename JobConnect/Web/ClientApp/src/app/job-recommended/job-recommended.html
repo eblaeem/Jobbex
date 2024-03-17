@@ -1,0 +1,94 @@
+<div class="section-full p-t10  p-b10 site-bg-white">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-12 rightSidebar">
+        <div class="side-bar">
+          <div class="widget tw-sidebar-tags-wrap">
+            <h4 class="section-head-small mb-4">پربازدیدترین تخصص ها</h4>
+            <div class="tagcloud">
+              <a class="popular-search " *ngFor="let item of popularTags">
+                {{item.label}}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-8 col-md-12">
+        <div class="product-filter-wrap d-flex justify-content-between align-items-center m-b30">
+          <span class="woocommerce-result-count-left">
+            {{total}} موقعیت شغلی
+          </span>
+          <form class="woocommerce-ordering twm-filter-select">
+            <span class="woocommerce-result-count">فیلتر</span>
+
+            <div class="dropdown bootstrap-select wt-select-bar-2 p-2">
+              <select2 [data]="pageLengths"
+                       placeholder="5"
+                       class="btn dropdown-toggle btn-light"
+                       [value]="pageLengthId">
+              </select2>
+            </div>
+            <div class="dropdown bootstrap-select wt-select-bar-2 p-2">
+              <select2 [data]="sortingTypes"
+                       placeholder="جدیدترین"
+                       class="btn dropdown-toggle btn-light"
+                       [value]="sortingTypeId">
+              </select2>
+            </div>
+          </form>
+        </div>
+        <div class="twm-jobs-list-wrap">
+          <ul>
+            <li *ngFor="let item of response | paginate: { itemsPerPage: itemsPerPage, currentPage: page,totalItems:this.total }">
+              <div class="twm-jobs-list-style1 mb-5">
+                <div class="twm-media">
+                  <img class="img-thumbnail" style="max-width:90px;padding:3px;margin:2px" [src]="item.attachmentLogoString" alt="#">
+                </div>
+                <div class="twm-mid-content">
+                  <a href="job-detail.html" class="twm-job-title">
+                    <h4>
+                      {{item.jobTitle}}
+
+                    </h4>
+                  </a>
+                  <ul class="list-unstyled">
+                    <li>
+                      {{item.cityName}}
+                    </li>
+                    <li>
+                      <span class="twm-job-post-duration">
+                        {{item.dateTimeString}}
+                      </span>
+                    </li>
+                  </ul>
+
+                </div>
+                <div class="twm-right-content">
+                  <div class="twm-jobs-category green">
+                    <span class="twm-bg-green">
+                      پیشنهادی
+                    </span>
+                  </div>
+                  <div class="twm-jobs-amount">
+                    {{item.salaryTypeTitle}}
+                  </div>
+                  <a [routerLink]="['/job', item.id]" class="twm-jobs-browse site-text-primary">
+                    ارسال رزومه
+                  </a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="pagination-outer">
+          <pagination-controls [responsive]="true"
+                               [previousLabel]="labels.previousLabel"
+                               [nextLabel]="labels.nextLabel"
+                               (pageChange)="onPageChange($event)"></pagination-controls>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

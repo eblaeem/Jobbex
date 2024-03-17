@@ -1,0 +1,72 @@
+
+<div *ngIf="total == 0"><p>مورد نشان شده‌ای یافت نشد:(</p></div>
+
+<div class="section-full p-t20 p-b20 site-bg-white">
+  <div class="container">
+    <div class="row">
+      <div *ngFor="let item of response | paginate: { itemsPerPage: itemsPerPage, currentPage: page,totalItems:this.total }" class=" col-md-4">
+        <div class="twm-jobs-grid-style1 m-b30">
+          <div class="twm-media">
+            <img [src]="item.companyLogo">
+          </div>
+          <div class="twm-jobs-category green">
+            <span style="background: #e0eeff">جدید</span>
+          </div>
+          <div class="twm-mid-content">
+            <a [routerLink]="['/job', item.jobId]" class="twm-job-title">
+              <h4> {{item.jobTitle}}</h4>
+            </a>
+            <ul>
+              <li>
+                <span class="twm-job-address">
+                  <i class="fa fa-calendar-times opacity-06"></i>
+                  {{item.dateTimeString}}
+                </span>
+              </li>
+              <li>
+                <span class="twm-job-address">
+                  <i class="fa fa-city opacity-06"></i>
+                  {{item.cityName}}
+                </span>
+              </li>
+              <li>
+                <span class="twm-job-address">
+                  <i class="fa fa-building opacity-06"></i>
+                  {{item.companyName}}
+                </span>
+              </li>
+              <li>
+                <span class="twm-job-address">
+                  <i class="fa fa-list opacity-06"></i>
+                  {{item.jobGroupName}}
+                </span>
+              </li>
+              <li>
+                <span class="twm-job-address">
+                  <i class="fa fa-file-signature opacity-06"></i>
+                  {{item.contractName}}
+                </span>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <a [routerLink]="['/job', item.jobId]" class="btn twm-jobs-browse site-text-primary">
+              <i class="fa feather-send"></i>
+              ارسال رزومه
+            </a>
+            <a (click)="unpin(item.jobId)" class="btn twm-jobs-browse site-text-primary">
+              <i class="fa fa-trash"></i>
+              حذف نشان
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="pagination-outer" *ngIf="total>0">
+        <pagination-controls [responsive]="true"
+                             [previousLabel]="labels.previousLabel"
+                             [nextLabel]="labels.nextLabel"
+                             (pageChange)="onPageChange($event)"></pagination-controls>
+      </div>
+    </div>
+  </div>
+</div>

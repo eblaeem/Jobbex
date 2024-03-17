@@ -1,0 +1,282 @@
+<div class="twm-home2-banner-section site-bg-gray bg-cover" style="background-image: url(../assets/images/main-slider/slider2/bg1.jpg); background-size: initial; background-position: left; padding-top: 200px; ">
+</div>
+
+<div class="twm-search-bar-2-wrap">
+  <div class="container">
+    <div class="twm-search-bar-2-inner">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="twm-bnr-search-bar">
+            <form>
+              <div class="row">
+                <div class="form-group col-xl-3 col-lg-6 col-md-6">
+                  <label>عنوان شغل/شرکت</label>
+                  <div class="twm-inputicon-box">
+                    <input name="jobTitle" class="form-control" placeholder="جستجو..." [(ngModel)]="title">
+                    <i class="twm-input-icon fas fa-map-marker-alt"></i>
+                  </div>
+                </div>
+                <div class="form-group col-xl-3 col-lg-6 col-md-6">
+                  <label>گروه شغلی</label>
+                  <div class="dropdown bootstrap-select wt-search-bar-select dropup">
+                    <select2 placeholder="جستجو"
+                             [data]="groups"
+                             [value]="jobGroupId"
+                             resettable
+                             id="selec2-job-group"
+                             name="jobGroupId"
+                             [(ngModel)]="jobGroupId">
+                    </select2>
+                  </div>
+                </div>
+                <div class="form-group col-xl-3 col-lg-6 col-md-6">
+                  <label>شهرها</label>
+                  <div class="dropdown bootstrap-select wt-search-bar-select dropup">
+                    <select2 placeholder="جستجو"
+                             [data]="cities"
+                             [value]="cityId"
+                             class="btn dropdown-toggle btn-light form-control"
+                             resettable
+                             id="selec2-2"
+                             name="provinceId"
+                             [(ngModel)]="provinceId">
+                    </select2>
+                    <!--<select2 placeholder="جستجو"
+                             [data]="cities1"
+                             [customSearchEnabled]="true"
+                             [minCharForSearch]="2"
+                             (search)="ngSearch($event)">
+                    </select2>-->
+                  </div>
+                </div>
+                <div class="form-group col-xl-3 col-lg-6 col-md-6">
+                  <button type="button" class="site-button mt-1" (click)="onSubmitHandler(title,groupId,provinceId)">جستجو</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="twm-bnr-popular-search">
+        <a class="popular-search " *ngFor="let item of popularTags">
+          {{item.label}}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section-full  site-bg-white pos-relative " style="padding-bottom:30px;">
+  <div class="container">
+    <div class="section-content">
+      <div class="twm-explore-content-outer-3">
+        <div class="twm-explore-content-3">
+          <div class="twm-title-small">جدیدترین آگهی ها</div>
+          <div class="twm-title-large">
+            <div class="twm-jobs-grid-h5-wrap">
+              <div class="row">
+                <div *ngFor="let item of response" class=" col-md-4">
+                  <div class="twm-jobs-grid-style1 m-b30">
+                    <div class="twm-media">
+                      <img [src]="item.companyLogo">
+                    </div>
+                    <div class="twm-jobs-category green">
+                      <span style="background: #e0eeff">جدید</span>
+                    </div>
+                    <div class="twm-mid-content">
+                      <a [routerLink]="['/job', item.id]" [title]="item.jobTitle" class="twm-job-title">
+                        {{(item.jobTitle.length>50)? (item.jobTitle | slice:0:47)+'...':(item.jobTitle) }}
+                      </a>
+                      <ul>
+                        <li>
+                          <span class="twm-job-address">
+                            <i class="fa fa-calendar-times opacity-06"></i>
+                            {{item.dateTimeString}}
+                          </span>
+                        </li>
+                        <li>
+                          <span class="twm-job-address">
+                            <i class="fa fa-city opacity-06"></i>
+                            {{item.cityName}}
+                          </span>
+                        </li>
+                        <li>
+                          <span class="twm-job-address">
+                            <i class="fa fa-building opacity-06"></i>
+                            {{item.companyName}}
+                          </span>
+                        </li>
+                        <li>
+                          <span class="twm-job-address">
+                            <i class="fa fa-list opacity-06"></i>
+                            {{item.jobGroupName}}
+                          </span>
+                        </li>
+                        <li>
+                          <span class="twm-job-address">
+                            <i class="fa fa-file-signature opacity-06"></i>
+                            {{item.contractTypeName}}
+                          </span>
+                        </li>
+                      </ul>
+                    </div>
+                    <div>
+                      <a [routerLink]="['/job', item.id]" class="btn twm-jobs-browse site-text-primary">
+                        <i class="fa feather-send"></i>
+                        ارسال رزومه
+                      </a>
+                      <a (click)="pin(item.id)" class="btn twm-jobs-browse site-text-primary" >
+                        <i class="fa fa-map-pin"></i>
+                        نشان کردن
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="twm-upload-file text-center">
+            <a [routerLink]="['/jobs']" class="btn btn-home">
+              <i class="feather-search"></i>
+              مشاهده همه مشاغل
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section-full p-t20 p-b10  twm-job-categories-area2" style="padding-bottom:30px;">
+  <div class="container">
+    <div class="twm-explore-content-outer-3">
+      <div class="twm-explore-content-3">
+        <div class="twm-title-small">شرکتهای فعال</div>
+        <div class="twm-title-large">
+          <div class="row">
+            <div *ngFor="let item of popularCompanies" class="col-lg-3 col-md-6">
+              <div class="job-categories-block-2 m-b30">
+                <div class="twm-media">
+                  <img [src]="item.companyLogo" />
+                </div>
+                <div class="twm-content">
+                  <div class="twm-jobs-available">
+                    موقعیت های فعال
+                    {{item.jobCount}}
+                  </div>
+                  <a [routerLink]="['/company', item.id]" [title]="item.name">
+                    {{ (item.name.length>50)? (item.name | slice:0:47)+'...':(item.name) }}
+                  </a>
+                  <div>
+                    <i style="float:right;padding:2px" class="fa fa-info"></i>
+                    <app-read-more [text]="item.description" [maxLength]="60"></app-read-more>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="twm-upload-file text-center">
+          <a [routerLink]="['/companies']" class="btn btn-home">
+            <i class="feather-search"></i>
+            مشاهده همه شرکتها
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="twm-search-bar-2-wrap section-full p-b20 site-bg-white m-t100 twm-bdr-bottom-1">
+  <div class="container">
+    <div class="twm-search-bar-2-inner">
+      <div class="twm-company-approch2">
+        <div class="row">
+          <div class="col-lg-4 col-md-4">
+            <div class="counter-outer-two">
+              <div class="icon-content">
+                <div class="tw-count-number site-text-primary">
+                  <span class="counter">
+                    {{userCount}}
+                  </span>
+                </div>
+                <p class="icon-content-info">
+                   مشتری
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-4">
+            <div class="counter-outer-two">
+              <div class="icon-content">
+                <div class="tw-count-number site-text-primary">
+                  <span class="counter">
+                    {{jobCount}}
+                  </span>
+                </div>
+                <p class="icon-content-info">
+                   فرصت شغلی
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-4">
+            <div class="counter-outer-two">
+              <div class="icon-content">
+                <div class="tw-count-number site-text-primary">
+                  <span class="counter">
+                    {{viewsCount}}
+                  </span>
+                </div>
+                <p class="icon-content-info">
+                  بازدید از سایت
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--<div class="section-full p-b20 site-bg-white">
+  <div class="container">
+    <div class="section-content">
+      <div class="twm-blog-post-3-outer-wrap">
+        <div class="row d-flex justify-content-center">
+          <div *ngFor="let item of popularCompanies" class="col-lg-6 col-md-12 col-sm-12">
+            <div class="twm-candidates-list-style1">
+              <div class="twm-media">
+                <div class="twm-media-pic">
+                  <img src="../assets/../assets/../assets/images/candidates/pic1.jpg" alt="#">
+                </div>
+                <div class="twm-candidates-tag">
+                  <span>Featured</span>
+                </div>
+              </div>
+              <div class="twm-mid-content">
+                <a href="candidate-detail.html" class="twm-job-title">
+                  <h4>Wanda Montgomery </h4>
+                </a>
+                <p>Charted Accountant</p>
+
+                <div class="twm-fot-content">
+                  <div class="twm-left-info">
+                    <p class="twm-candidate-address"><i class="feather-map-pin"></i>New York</p>
+                    <div class="twm-jobs-vacancies">$20<span>/ Day</span></div>
+                  </div>
+                  <div class="twm-right-btn">
+                    <a href="candidate-detail.html" class="twm-view-prifile site-text-primary">View Profile</a>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>-->

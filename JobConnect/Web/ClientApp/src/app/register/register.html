@@ -1,0 +1,159 @@
+<div class="section-full site-bg-white">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xl-3 col-lg-6 col-md-7">
+        <div class="twm-log-reg-form-wrap">
+          <div class="twm-log-reg-inner">
+            <div class="twm-tabs-style-2">
+              <form [formGroup]="userRegister" (ngSubmit)="submit()">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="form-group mb-3 ls-inputicon-box">
+                      <input name="firstName" formControlName="firstName" placeholder="نام" class="form-control">
+                      <i class="fs-input-icon fa fa-asterisk "></i>
+
+                      <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"
+                           class="alert alert-danger mt-1 p-2">
+                        <div *ngIf="firstName.errors?.['required']">
+                          نام الزامی می باشد
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-12">
+                    <div class="form-group mb-3 ls-inputicon-box">
+                      <input name="lastName" formControlName="lastName" placeholder="نام خانوادگی" class="form-control">
+                      <i class="fs-input-icon fa fa-asterisk "></i>
+
+                      <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)"
+                           class="alert alert-danger mt-1 p-2">
+                        <div *ngIf="lastName.errors?.['required']">
+                          نام خانوادگی الزامی می باشد
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-12">
+                    <div class="form-group mb-3 ls-inputicon-box">
+                      <input name="phoneNumber" formControlName="phoneNumber" placeholder="موبایل" class="form-control">
+                      <i class="fs-input-icon fa fa-asterisk "></i>
+
+                      <div *ngIf="phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)"
+                           class="alert alert-danger mt-1 p-2">
+                        <div *ngIf="phoneNumber.errors?.['required']">
+                          موبایل الزامی می باشد
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-12">
+                    <div class="form-group mb-3 ls-inputicon-box">
+                      <input name="email" formControlName="email" placeholder="ایمیل" class="form-control">
+
+                      <div *ngIf="email.invalid && (email.dirty || email.touched)"
+                           class="alert alert-danger mt-1 p-2">
+                        <div *ngIf="email.errors?.['required']">
+                          ایمیل الزامی می باشد
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-12">
+                    <div class="form-group mb-3 ls-inputicon-box">
+                      <input name="userName" formControlName="userName" placeholder="نام کاربری" class="form-control">
+                      <i class="fs-input-icon fa fa-asterisk "></i>
+
+                      <div *ngIf="userName.invalid && (userName.dirty || userName.touched)"
+                           class="alert alert-danger mt-1 p-2">
+                        <div *ngIf="userName.errors?.['required']">
+                          نام کاربری الزامی می باشد
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-12">
+                    <div class="form-group mb-3 ls-inputicon-box">
+                      <input name="password" formControlName="password" type="password" placeholder="رمز عبور" class="form-control">
+                      <i class="fs-input-icon fa fa-asterisk "></i>
+
+                      <div *ngIf="password.invalid && (password.dirty || password.touched)"
+                           class="alert alert-danger mt-1 p-2">
+                        <div *ngIf="password.errors?.['required']">
+                          رمز عبور الزامی می باشد
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-12">
+                    <div class="form-group mb-3 ls-inputicon-box">
+                      <input name="confirmPassword" formControlName="confirmPassword" type="password" placeholder="تکراز رمز عبور" class="form-control">
+                      <i class="fs-input-icon fa fa-asterisk "></i>
+
+                      <div *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)"
+                           class="alert alert-danger mt-1 p-2">
+                        <div *ngIf="confirmPassword.errors?.['required']">
+                          تکراز رمز عبور الزامی می باشد
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row col-lg-12">
+                    <div class="col-md-6 ls-inputicon-box">
+                      <input name="captcha" formControlName="captcha" placeholder="کد امنیتی" class="form-control">
+                      <i class="fs-input-icon fa fa-asterisk "></i>
+
+                      <div *ngIf="captcha.invalid && (captcha.dirty || captcha.touched)"
+                           class="alert alert-danger mt-1 p-2">
+                        <div *ngIf="captcha.errors?.['required']">
+                          کد امنیتی الزامی می باشد
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="col-md-6">
+                      <img alt="captcha" [src]="imgCaptcha" style="margin-bottom: 4px;">
+
+                      <a class="btn-sm" (click)="getCaptcha()">
+                        <img class="reload-icon" src="../assets/img/reload-icon.svg" />
+                      </a>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <button type="submit" class="login-button">
+                        <i class="fa fa-save"></i>
+                        ثبت نام
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <hr class="mt-3" />
+                <ul class="nav nav-tabs" id="myTab2" role="tablist">
+                  <li class="nav-item">
+                    <button class="nav-link" [routerLink]="['/login']" type="button">
+                      <i class="fa fa-plug"></i>
+                      ورود
+                    </button>
+                  </li>
+                  <!--<li class="nav-item">
+                    <button class="nav-link" [routerLink]="['/change-password']" type="button">
+                      <i class="fa fa fa-envelope"></i>
+                      فراموشی رمز عبور
+                    </button>
+                  </li>-->
+                </ul>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-9 col-lg-6 col-md-5 twm-log-reg-media-wrap" style="min-height: 100vh; box-shadow: 0px 0px 10px rgba(56, 152, 226, 0.3); background-image: url('/assets/images/background/2.jpg'); background-size: cover; background-position: bottom; ">
+        <div class="twm-log-reg-media">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

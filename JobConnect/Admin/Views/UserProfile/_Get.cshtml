@@ -1,0 +1,367 @@
+﻿@model ViewModel.User.UserProfile
+@{
+    Layout = null;
+}
+<style>
+
+    .twm-s-title {
+        position: relative;
+    }
+
+    .twm-candi-self-wrap-2 {
+        margin-top: 0px !important;
+        padding: 10px !important;
+    }
+
+    .twm-timing-list .twm-time-list-title:before {
+        right: -30px;
+    }
+
+    .twm-timing-list .twm-time-list-title:after {
+        right: -18px;
+    }
+
+    .twm-candi-self-wrap-2 {
+        margin-bottom: 140px !important;
+    }
+
+        .twm-candi-self-wrap-2 .twm-candi-self-info-2 {
+            padding: 20px 27px 0px !important;
+        }
+
+            .twm-candi-self-wrap-2 .twm-candi-self-info-2 .twm-candi-self-top {
+                padding-top: 0px !important;
+            }
+
+                .twm-candi-self-wrap-2 .twm-candi-self-info-2 .twm-candi-self-top .twm-media {
+                    max-width: 160px !important;
+                    margin: 0px auto 10px !important;
+                }
+
+    .twm-timing-list-wrap {
+        padding: 10px !important;
+    }
+
+    .twm-s-info ul li .twm-s-info-inner .twm-s-info-discription {
+        font-size: 14px !important;
+    }
+
+    .twm-timing-list .twm-time-list-title {
+        padding-right: 8px;
+    }
+</style>
+<!DOCTYPE html>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="" />
+    <meta name="author" content="" />
+    <meta name="robots" content="" />
+    <meta name="description" content="" />
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+
+    <title>آگهی استخدام/بازاریابی</title>
+    <script type="systemjs-importmap" src="/import.json"></script>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="~/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="~/css/feather.css">
+    <link rel="stylesheet" type="text/css" href="~/css/flaticon.css">
+    <link rel="stylesheet" type="text/css" href="~/css/style.css">
+    <link href="~/css/site.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="section-full  p-t10 p-b10 bg-white" style="transform: none;">
+        <div class="container" style="transform: none;">
+            <div class="section-content" style="transform: none;">
+                <div class="row col-md-12 d-flex justify-content-center" style="transform: none;">
+                    <div class="col-lg-4 col-md-12 rightSidebar"
+                         style="position: relative;width:33%; overflow: visible; box-sizing: border-box; min-height: 1px;">
+                        <div class="theiaStickySidebar"
+                             style="padding-top: 0px; padding-bottom: 1px; position: static; transform: none; top: 0px; left: 1167px;">
+                            <div class="side-bar-2">
+                                <div class="twm-s-info-wrap mb-5">
+                                    <div class="twm-s-info">
+                                        <ul>
+                                            <li>
+                                                <div class="twm-s-info-inner">
+                                                    <i class="fas fa-venus-mars"></i>
+                                                    <span class="twm-title">شهر محل سکونت</span>
+                                                    <div class="twm-s-info-discription">
+                                                        @Model.CityName
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="twm-s-info-inner">
+                                                    <i class="fas fa-money-bill-wave"></i>
+                                                    <span class="twm-title">
+                                                        حقوق درخواستی
+                                                    </span>
+                                                    <div class="twm-s-info-discription">
+                                                        @Model.SalaryRequestedName
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="twm-s-info-inner">
+                                                    <i class="fas fa-clock"></i>
+                                                    <span class="twm-title">
+                                                        سن
+                                                    </span>
+                                                    <div class="twm-s-info-discription">
+                                                        @Model.Age
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="twm-s-info-inner">
+                                                    <i class="fas fa-list"></i>
+                                                    <span class="twm-title">وضعیت تاهل</span>
+                                                    <div class="twm-s-info-discription">
+                                                        @Model.MaritalStateName
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="twm-s-info-inner">
+                                                    <i class="fas fa-list"></i>
+                                                    <span class="twm-title">وضعیت نظام وظیفه</span>
+                                                    <div class="twm-s-info-discription">
+                                                        @Model.MilitaryStateStateName
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                            <li>
+                                                <div class="twm-s-info-inner">
+                                                    <i class="fas fa-venus-mars"></i>
+                                                    <span class="twm-title">جنسیت</span>
+                                                    <div class="twm-s-info-discription">
+                                                        @Model.GenderName
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="twm-s-info-inner">
+                                                    <i class="fas fa-mobile-alt"></i>
+                                                    <span class="twm-title">شماره تماس</span>
+                                                    <div class="twm-s-info-discription">
+                                                        @Model.PhoneNumber
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="twm-s-info-inner">
+                                                    <i class="fas fa-at"></i>
+                                                    <span class="twm-title">ایمیل</span>
+                                                    <div class="twm-s-info-discription">
+                                                        @Model.Email
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            @if (Model.UserPriorities != null)
+                                            {
+                                                <li>
+                                                    <div class="twm-s-info-inner">
+                                                        <i class="fas fa-book-reader"></i>
+                                                        <span class="twm-title">شغل مورد علاقه</span>
+                                                        @foreach (var item in Model.UserPriorities?.GroupsName)
+                                                        {
+                                                            <div class="twm-s-info-discription">
+                                                                <span>
+                                                                    @item
+                                                                </span>
+                                                            </div>
+                                                        }
+                                                    </div>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8 col-md-12" style="width:66%">
+                        <div class="cabdidate-de-info">
+                            <div class="twm-candi-self-wrap-2 overlay-wraper">
+                                <div class="overlay-main site-bg-primary opacity-01"></div>
+                                <div class="container">
+                                    <div class="twm-candi-self-info-2">
+                                        <div class="twm-candi-self-top">
+                                            <div class="twm-candi-fee">
+                                                JobBex.Ir
+                                            </div>
+                                            <div class="twm-media">
+                                                @if (string.IsNullOrEmpty(Model.UserProfileImage) == false)
+                                                {
+                                                    <img src="@Model.UserProfileImage">
+                                                }
+                                                else
+                                                {
+                                                    <img src="/images/user-avtar/default.png">
+                                                }
+
+                                            </div>
+                                            <div class="twm-mid-content">
+                                                <h4 class="twm-job-title">
+                                                    @Model.DisplayName
+                                                </h4>
+                                                <p class="twm-candidate-address">
+                                                    <i class="feather-map-pin"></i>
+
+                                                    @Model.CityName
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @if (string.IsNullOrEmpty(Model.Description) == false)
+                            {
+                                <h4 class="twm-s-title">درباره من!</h4>
+                                <p>
+                                    @Html.Raw(Model.Description)
+                                </p>
+                            }
+
+
+                            @if (Model.UserSkills != null && Model.UserSkills.Any())
+                            {
+                                <h4 class="twm-s-title">تخصص ها</h4>
+                                <div class="tw-sidebar-tags-wrap">
+                                    <div class="tagcloud">
+                                        @foreach (var item in Model.UserSkills)
+                                        {
+                                            <a>
+                                                @item.SoftwareSkillName
+                                                @item.LevelName
+                                            </a>
+                                        }
+                                    </div>
+                                </div>
+                            }
+
+                            @if (Model.UserEducations != null && Model.UserEducations.Any())
+                            {
+                                <div class="col-md-12">
+                                    <h4 class="twm-s-title">سوابق تحصیلی/آموزشی</h4>
+                                    <div class="twm-timing-list-wrap">
+                                        @foreach (var item in Model.UserEducations)
+                                        {
+                                            <div class="twm-timing-list">
+                                                <div class="twm-time-list-date">
+                                                    @item.StartDate - @item.EndDate
+                                                </div>
+                                                <div class="twm-time-list-title">
+                                                    <span class="twm-title">
+                                                        سمت:
+                                                    </span>
+                                                    @item.Degree
+                                                </div>
+                                                <div class="twm-time-list-position">
+
+                                                    <span class="twm-title">
+                                                        رشته تحصیلی:
+                                                    </span>
+                                                    @item.Field
+                                                </div>
+                                                <div class="twm-time-list-position">
+
+                                                    <span class="twm-title">
+                                                        نام دانشگاه/موسسه آموزشی:
+                                                    </span>
+                                                    @item.UniversityName
+                                                </div>
+                                            </div>
+                                        }
+
+                                    </div>
+                                </div>
+                            }
+                            @if (Model.UserJobs != null && Model.UserJobs.Any())
+                            {
+                                <div class="col-md-12">
+                                    <h4 class="twm-s-title">
+                                        سوابق شغلی
+                                    </h4>
+                                    <div class="twm-timing-list-wrap">
+                                        @foreach (var item in Model.UserJobs)
+                                        {
+                                            <div class="twm-timing-list">
+                                                <div class="twm-time-list-date">
+                                                    @item.StartDate - @item.EndDate
+                                                </div>
+                                                <div class="twm-time-list-title">
+
+                                                    <span class="twm-title">
+                                                        عنوان شغلی:
+                                                    </span>
+                                                    @item.JobTitle
+                                                </div>
+                                                <div class="twm-time-list-position">
+
+                                                    <span class="twm-title">
+                                                        سمت:
+                                                    </span>
+                                                    @item.Position
+                                                </div>
+                                                <div class="twm-time-list-position">
+
+                                                    <span class="twm-title">
+                                                        عنوان شرکت:
+                                                    </span>
+                                                    @item.CompanyName
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            }
+
+                            @if (Model.UserLanguages != null && Model.UserLanguages.Any())
+                            {
+                                <div class="col-md-12">
+                                    <h4 class="twm-s-title">اطلاعات زبان ها</h4>
+                                    <div class="twm-timing-list-wrap">
+                                        @foreach (var item in Model.UserLanguages)
+                                        {
+                                            <div class="twm-timing-list">
+                                                <div class="twm-time-list-title">
+                                                    <span class="twm-title">
+                                                        نام زبان:
+                                                    </span>
+                                                    @item.Language
+                                                </div>
+                                                <div class="twm-time-list-position">
+                                                    <span class="twm-title">
+                                                        سطح تسلط:
+                                                    </span>
+                                                    @item.Level
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
+

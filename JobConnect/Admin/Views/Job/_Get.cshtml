@@ -1,0 +1,183 @@
+﻿@model List<ViewModel.Company.CompanyJobResponse>
+@using DNTPersianUtils.Core
+@{
+    var pageNumber = @Model.FirstOrDefault()?.PageNumber.GetValueOrDefault();
+    var pageSize = @Model.FirstOrDefault()?.PageSize ?? 0;
+    var totalRowNumber = @Model.FirstOrDefault()?.TotalRowCount ?? 0;
+}
+
+<table class="table table-striped">
+    <thead class="text-center">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">عنوان</th>
+            <th scope="col">تاریخ</th>
+            <th scope="col">شهر</th>
+            <th scope="col">وضعیت</th>
+            <th scope="col">تعداد رزومه دریافتی</th>
+            <th scope="col">عملیات</th>
+
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr class="align-baseline">
+                <th scope="row">@((pageNumber * pageSize) + Model.IndexOf(item) + 1)</th>
+                <td>@item.JobTitle</td>
+                <td>@item.DateTime.ToPersianDateTextify()</td>
+                <td>@item.Status</td>
+                <td>
+                    @if (item.Status)
+                    {
+                        <i class="fa fa-check"></i>
+                    }
+                    else
+                    {
+                        <i class="fa fa-times"></i>
+                    }
+                </td>
+                <td>@item.JobRequestedCount</td>
+                <td>
+                    <a href="/job/save/@item.JobId" class="btn twm-jobs-browse site-text-primary ">
+                        <i class="fa fa-edit"></i>
+                    </a>
+                    <a href="/JobRequest/Detail/@item.JobId" class="btn twm-jobs-browse site-text-primary">
+                        <i class="fa fa-list"></i>
+                    </a>
+                </td>
+
+
+
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+@*<div class=" col-md-6 twm-jobs-list-style1 mb-1" style="padding:10px;width:49%;float:right">
+    <div class="row col-md-12">
+        <ul>
+            <li>
+                <span class="twm-job-address">
+                    <span class="gray-color"> ردیف:</span>
+                    @((pageNumber * pageSize) + Model.IndexOf(item) + 1)
+                </span>
+            </li>
+            <li>
+                <span class="twm-job-address">
+                    <span class="gray-color"> عنوان شغلی:</span>
+                    @if (item.JobTitle.Length > 30)
+                    {
+                        <span title="@item.JobTitle">
+                            @item.JobTitle.Substring(0, 27)
+                            <span>...</span>
+                        </span>
+                    }
+                    else
+                    {
+                        <span>@item.JobTitle</span>
+                    }
+                </span>
+            </li>
+            <li>
+                <span class="twm-job-address">
+                    <span class="gray-color">تاریخ:</span>
+                    <span>
+                        @item.DateTimeString
+                        <span class="gray-color">
+                            (@item.DateTime.ToShortPersianDateString())
+                        </span>
+                    </span>
+                </span>
+            </li>
+            <li>
+                <span class="twm-job-address">
+                    <span class="gray-color">وضعیت:</span>
+                    @if (item.Status)
+                    {
+                        <i class="fa fa-check"></i>
+                    }
+                    else
+                    {
+                        <i class="fa fa-times"></i>
+                    }
+                </span>
+            </li>
+            <li>
+                <span class="twm-job-address">
+                    <span class="gray-color">رزمه های دریافت شده:</span>
+                    @item.JobRequestedCount
+                </span>
+            </li>
+
+            <li>
+                <span class="twm-job-address">
+                    <span class="gray-color">شهر:</span>
+                    @item.CityName
+                </span>
+            </li>
+
+            <li>
+                <span class="twm-job-address">
+                    <span class="gray-color">گروه شغلی :</span>
+                    @item.JobGroupName
+                </span>
+            </li>
+            <li>
+                <span class="twm-job-address">
+                    <span class="gray-color">نوع قرارداد :</span>
+                    @item.ContractTypeName
+                </span>
+            </li>
+
+            <li>
+                <span class="twm-job-address">
+                    <span class="gray-color">سابقه کاری :</span>
+                    @item.WorkExperienceYearName
+                </span>
+            </li>
+            <li>
+                <span class="twm-job-address">
+                    <span class="gray-color">حقوق درخواست :</span>
+                    @item.SalaryRequestedName
+                </span>
+            </li>
+            <li>
+                <hr />
+            </li>
+            <li>
+                <a href="/job/save/@item.JobId" class="btn twm-jobs-browse site-text-primary ">
+                    <i class="fa fa-edit"></i>
+                    ویرایش آگهی
+                </a>
+                <a href="/JobRequest/Detail/@item.JobId" class="btn twm-jobs-browse site-text-primary">
+                    <i class="fa fa-search"></i>
+                    رزومه های ارسال شده
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>*@
+
+
+@if (Model.FirstOrDefault()?.TotalRowCount > 0)
+{
+    <div class="row col-md-12 pagination-outer">
+        <div class="pagination-style1">
+            <app-pager asp-controller="Job"
+                       asp-action="Get"
+                       first-text="ابتدا"
+                       last-text="انتها"
+                       show-first-last="true"
+                       page-number="@pageNumber.GetValueOrDefault() + 1"
+                       page-size="@pageSize"
+                       is-ajax="true"
+                       ajax-container="#"
+                       total-page-number="@totalRowNumber"></app-pager>
+        </div>
+    </div>
+}
+
+

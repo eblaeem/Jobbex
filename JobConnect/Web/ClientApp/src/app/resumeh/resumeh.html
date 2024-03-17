@@ -1,0 +1,255 @@
+<div class="section-full  p-t10 p-b10 bg-white" style="transform: none;">
+  <div class="container" style="transform: none;">
+    <div class="section-content" style="transform: none;">
+      <div class="row d-flex justify-content-center" style="transform: none;">
+        <div class="col-lg-8 col-md-12">
+          <div class="cabdidate-de-info">
+            <div class="twm-candi-self-wrap-2 overlay-wraper">
+              <div class="overlay-main site-bg-primary opacity-01"></div>
+              <div class="container">
+                <div class="twm-candi-self-info-2">
+                  <div class="twm-candi-self-top">
+                    <div class="twm-candi-fee">
+                      <!--{{userProfile.salaryRequestedName}}-->
+                      JobBex.Ir
+                    </div>
+                    <div class="twm-media">
+                      <img [src]="userProfileImage">
+                    </div>
+                    <div class="twm-mid-content">
+                      <h4 class="twm-job-title">{{userProfile.displayName}}</h4>
+                      <p class="twm-candidate-address">
+                        <i class="feather-map-pin"></i>
+                        {{userProfile.cityName}}
+                      </p>
+                    </div>
+                  </div>
+                  <div class="twm-candi-self-bottom">
+                    <a href="" class="site-button default de-info">
+                      <i class="fa fa-file-pdf"></i>
+                      دانلود رزومه
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <h4 class="twm-s-title">درباره من!</h4>
+            <p>
+              {{userProfile.description}}
+            </p>
+
+            <h4 class="twm-s-title">تخصص ها</h4>
+            <div class="tw-sidebar-tags-wrap">
+              <div class="tagcloud">
+                <a *ngFor="let item of userProfile.userSkills; index as i; first as isFirst">
+                  {{item.softwareSkillName}}
+                  {{item.levelName}}
+                </a>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <h4 class="twm-s-title">سوابق تحصیلی/آموزشی</h4>
+              <div class="twm-timing-list-wrap">
+                <div *ngFor="let item of userProfile.userEducations" class="twm-timing-list">
+                  <div class="twm-time-list-date">
+                    {{item.startDate}} - {{item.endDate}}
+                  </div>
+                  <div class="twm-time-list-title">
+                    <span class="twm-title">
+                      سمت:
+                    </span>
+                    {{item.degree}}
+                  </div>
+                  <div class="twm-time-list-position">
+
+                    <span class="twm-title">
+                      رشته تحصیلی:
+                    </span>
+                    {{item.field}}
+                  </div>
+                  <div class="twm-time-list-position">
+
+                    <span class="twm-title">
+                      نام دانشگاه/موسسه آموزشی:
+                    </span>
+                    {{item.universityName}}
+                  </div>
+                  <div class="twm-time-list-discription">
+
+                    <span class="twm-title">
+                      توضیحات:
+                    </span>
+                    {{item.description}}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <h4 class="twm-s-title">
+                سوابق شغلی
+              </h4>
+              <div class="twm-timing-list-wrap">
+                <div *ngFor="let item of userProfile.userJobs" class="twm-timing-list">
+                  <div class="twm-time-list-date">
+                    {{item.startDate}} - {{item.endDate}}
+                  </div>
+                  <div class="twm-time-list-title">
+
+                    <span class="twm-title">
+                      عنوان شغلی:
+                    </span>
+                    {{item.jobTitle}}
+                  </div>
+                  <div class="twm-time-list-position">
+
+                    <span class="twm-title">
+                      سمت:
+                    </span>
+                    {{item.position}}
+                  </div>
+                  <div class="twm-time-list-position">
+
+                    <span class="twm-title">
+                      عنوان شرکت:
+                    </span>
+                    {{item.companyName}}
+                  </div>
+                  <div class="twm-time-list-discription">
+
+                    <span class="twm-title">
+                      توضیحات:
+                    </span>
+                    {{item.description}}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <h4 class="twm-s-title">اطلاعات زبان ها</h4>
+              <div class="twm-timing-list-wrap">
+                <div *ngFor="let item of userProfile.userLanguages" class="twm-timing-list">
+                  <div class="twm-time-list-title">
+                    <span class="twm-title">
+                      نام زبان:
+                    </span>
+                    {{item.language}}
+                  </div>
+                  <div class="twm-time-list-position">
+                    <span class="twm-title">
+                      سطح تسلط:
+                    </span>
+                    {{item.level}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-12 rightSidebar"
+             style="position: relative; overflow: visible; box-sizing: border-box; min-height: 1px;">
+          <div class="theiaStickySidebar"
+               style="padding-top: 0px; padding-bottom: 1px; position: static; transform: none; top: 0px; left: 1167px;">
+            <div class="side-bar-2">
+              <div class="twm-s-info-wrap mb-5">
+                <div class="twm-s-info">
+                  <ul>
+                    <li>
+                      <div class="twm-s-info-inner">
+                        <i class="fas fa-venus-mars"></i>
+                        <span class="twm-title">شهر محل سکونت</span>
+                        <div class="twm-s-info-discription">
+                          {{userProfile.cityName}}
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="twm-s-info-inner">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <span class="twm-title">
+                          حقوق درخواستی
+                        </span>
+                        <div class="twm-s-info-discription">
+                          {{userProfile.salaryRequestedName}}
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="twm-s-info-inner">
+                        <i class="fas fa-clock"></i>
+                        <span class="twm-title">
+                          سن
+                        </span>
+                        <div class="twm-s-info-discription">
+                          {{userProfile.age}}
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="twm-s-info-inner">
+                        <i class="fas fa-list"></i>
+                        <span class="twm-title">وضعیت تاهل</span>
+                        <div class="twm-s-info-discription">
+                          {{userProfile.maritalStateName}}
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="twm-s-info-inner">
+                        <i class="fas fa-list"></i>
+                        <span class="twm-title">وضعیت نظام وظیفه</span>
+                        <div class="twm-s-info-discription">
+                          {{userProfile.militaryStateStateName}}
+                        </div>
+                      </div>
+                    </li>
+
+                    <li>
+                      <div class="twm-s-info-inner">
+                        <i class="fas fa-venus-mars"></i>
+                        <span class="twm-title">جنسیت</span>
+                        <div class="twm-s-info-discription">
+                          {{userProfile.genderName}}
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="twm-s-info-inner">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span class="twm-title">شماره تماس</span>
+                        <div class="twm-s-info-discription">
+                          {{userProfile.phoneNumber}}
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="twm-s-info-inner">
+                        <i class="fas fa-at"></i>
+                        <span class="twm-title">ایمیل</span>
+                        <div class="twm-s-info-discription">
+                          {{userProfile.email}}
+                        </div>
+                      </div>
+                    </li>
+                    <li *ngIf="userProfile.userPriorities">
+                      <div class="twm-s-info-inner">
+                        <i class="fas fa-book-reader"></i>
+                        <span class="twm-title">شغل مورد علاقه</span>
+                        <div *ngFor="let item of userProfile.userPriorities.groupsName" class="twm-s-info-discription">
+                          <span>
+                            {{item}}
+                          </span>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

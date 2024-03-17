@@ -1,0 +1,81 @@
+﻿@model ViewModel.JobRequest.JobRequestFilter
+
+@{
+    ViewBag.Title = " درخواستهای آگهی ";
+}
+<section class="ftco-section col-md-12">
+    <div class="panel panel-default">
+        <div class="panel-heading wt-panel-heading p-a10">
+            <h4 class="panel-tittle m-a0">
+                <i class="fa fa-list"></i>
+                @ViewBag.Title
+            </h4>
+        </div>
+        <div class="panel-body wt-panel-body p-a20 m-b30 ">
+            <div class="row col-md-12">
+                <div class="col-md-3">
+                    <form id="job-detail-form">
+                        <input type="hidden" asp-for="JobId" value="@Model.JobId" />
+                        <div class="form-group row col-md-12">
+                            <div class="col-md-12">
+                                <app-select asp-for="JobGroupId" asp-items="@Model.JobGroups"></app-select>
+                            </div>
+                        </div>
+                        <div class="form-group row col-md-12">
+                            <div class="col-md-12">
+                                <app-select asp-for="CityId" asp-items="@Model.Cities"></app-select>
+                            </div>
+                        </div>
+                        <div class="form-group row col-md-12">
+                            <div class="col-md-12">
+                                <app-select asp-for="WorkExperienceYearId" asp-items="@Model.WorkExperienceYears"></app-select>
+                            </div>
+                        </div>
+                        <div class="form-group row col-md-12">
+                            <div class="col-md-12">
+                                <app-select asp-for="PageSize" key="@Model.PageSize" asp-items="@Model.PageLengths"></app-select>
+                            </div>
+                        </div>
+                        <div class=" text-center">
+                            <a id="search-form" class="btn btn-success ">
+                                <i class="fa fa-search"></i>
+                                جستجو
+                            </a>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-9">
+
+                    <div class="row">
+                        <div class="twm-pro-view-chart-wrap col-md-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading wt-panel-heading p-a10">
+                                    <h4 class="panel-tittle m-a0">
+                                        <i class="fa fa-list"></i>
+                                        @Model.Job.JobTitle
+                                    </h4>
+                                </div>
+                                <div class="panel-body wt-panel-body p-a5 m-b10 ">
+                                    <div class="twm-right-section-panel candidate-save-job site-bg-gray">
+                                        <div class="twm-candidates-grid-wrap">
+                                            <div class="row" id="response">
+                                                @if (Model.Latest != null)
+                                                {
+                                                    <partial name="~/Views/JobRequest/_Get.cshtml" model="@Model.Latest" />
+                                                }
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script type="systemjs-module" src="/dist/job-datail.js"></script>

@@ -1,0 +1,135 @@
+﻿@model List<ViewModel.JobRequest.JobRequestResponse>
+@{
+    var pageNumber = @Model.FirstOrDefault()?.PageNumber.GetValueOrDefault();
+    var pageSize = @Model.FirstOrDefault()?.PageSize ?? 0;
+    var totalRowNumber = @Model.FirstOrDefault()?.TotalRowCount ?? 0;
+}
+@foreach (var item in Model)
+{
+    <div class="col-lg-6 col-md-6">
+        <div class="twm-candidates-grid-style1 mb-5">
+            <div class="twm-media" style="margin-bottom:0px;">
+                <div class="twm-media-pic">
+                    @if (string.IsNullOrEmpty(item.UserAvatar) == false)
+                    {
+                        <img src="@item.UserAvatar" alt="#">
+                    }
+                    else
+                    {
+                        <img src="/images/user-avtar/default.png" alt="#">
+                    }
+                </div>
+            </div>
+            <div class="twm-mid-content">
+                <ul>
+                    <li>
+                        <span>
+                            <span class="gray-color">
+                                نام:
+                            </span>
+                            <a class="twm-job-title">
+                                @item.DisplayName
+                            </a>
+                        </span>
+                    </li>
+                    <li>
+                        <span>
+                            <span class="gray-color">
+                                شماره همراه:
+                            </span>
+                            <a class="twm-job-title">
+                                @item.PhoneNumber
+                            </a>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="gray-color">
+                            وضعیت:
+                        </span>
+                        <span>
+                            @item.StatusName
+                        </span>
+                    </li>
+                    <li>
+                        <span>
+                            <span class="gray-color">
+                                رزومه سایت:
+                            </span>
+                            @if (item.UserId > 0)
+                            {
+                                <a data-user-id="@item.UserId" class="download-site-resumeh">
+                                    <i data-user-id="@item.UserId" class="fa fa-download"></i>
+                                </a>
+                            }
+                            else
+                            {
+                                <i class="fa fa-times"></i>
+                            }
+                        </span>
+                    </li>
+
+                    <li>
+                        <span class="gray-color">
+                            روزمه ارسالی:
+                        </span>
+                        <span>
+                            @if (item.AttachmentResumehId > 0)
+                            {
+                                <a data-id="@item.AttachmentResumehId" class=" download-attachment-resumeh">
+                                    <i data-id="@item.AttachmentResumehId" class="fa fa-download"></i>
+                                </a>
+                            }
+                            else
+                            {
+                                <i class="fa fa-times"></i>
+                            }
+                        </span>
+                    </li>
+                </ul>
+                <div class="twm-fot-content">
+                    <div class="twm-left-info">
+                        <p class="twm-candidate-address">
+                            <a data-id="@item.Id" class="btn twm-jobs-browse change-status">
+                                <i data-id="@item.Id" class="fa fa-save"></i>
+                                تعیین وضعیت
+                            </a>
+                        </p>
+                        <div class="twm-jobs-vacancies">
+                            <span>
+                                <i class="fa fa-calendar"></i>
+                                @item.DateTimeString
+                            </span>
+
+                            <span>
+                                @if (string.IsNullOrEmpty(item.UserCityName) == false)
+                                {
+                                    <i class="fa fa-building"></i>
+                                    @item.UserCityName
+                                }
+
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@if (Model.FirstOrDefault()?.TotalRowCount > 0)
+{
+    <div class="row col-md-12 pagination-outer">
+        <div class="pagination-style1">
+            <app-pager asp-controller="Job"
+                       asp-action="Get"
+                       first-text="ابتدا"
+                       last-text="انتها"
+                       show-first-last="true"
+                       page-number="@pageNumber.GetValueOrDefault() + 1"
+                       page-size="@pageSize"
+                       is-ajax="true"
+                       ajax-container="#"
+                       total-page-number="@totalRowNumber"></app-pager>
+        </div>
+    </div>
+}

@@ -1,0 +1,259 @@
+
+<div class="section-full p-t20  p-b20 site-bg-white">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-12 rightSidebar">
+        <div class="side-bar">
+          <div class="sidebar-elements search-bx">
+            <div class="form-group mb-4">
+              <h4 class="section-head-small mb-4">عنوان شغل/شرکت</h4>
+              <div class="input-group">
+                <input type="text" [(ngModel)]="term" class="form-control" placeholder="عنوان شغل/شرکت">
+                <button class="btn" (click)="get()" type="button">
+                  <i class="feather-search"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="tw-faq-section">
+              <div class="accordion tw-faq" id="sf-faq-accordion">
+                <div class="accordion-item">
+                  <button class="accordion-button" type="button"
+                          data-bs-toggle="collapse" aria-expanded="true"
+                          data-bs-target="#groups">
+                    <span>
+                      گروه شغلی
+                    </span>
+                  </button>
+                  <div id="groups" class="accordion-collapse collapse show">
+                    <div class="accordion-body">
+                      <div style="max-height:200px;overflow:auto">
+                        <ul>
+                          <li *ngFor="let item of groups">
+                            <div>
+                              <input type="checkbox" data-value="{{item.value}}" (change)="changeItems($event,selectedJobGroups)" class="form-check-input">
+                              <label class="form-check-label">
+                                {{item.label}}
+                              </label>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <button class="accordion-button" type="button"
+                          data-bs-toggle="collapse" aria-expanded="true"
+                          data-bs-target="#states">
+                    استان ها
+                  </button>
+                  <div id="states" class="accordion-collapse collapse show">
+                    <div class="accordion-body">
+                      <div style="max-height:200px;overflow:auto">
+                        <ul>
+                          <li *ngFor="let item of states">
+                            <div>
+                              <input type="checkbox" data-value="{{item.value}}" (change)="changeItems($event,selectedJobCities)" class="form-check-input">
+                              <label class="form-check-label">
+                                {{item.label}}
+                              </label>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <button class="accordion-button" type="button"
+                          data-bs-toggle="collapse" aria-expanded="true"
+                          data-bs-target="#contractTypes">
+                    نوع قرارداد
+                  </button>
+                  <div id="contractTypes" class="accordion-collapse collapse show">
+                    <div class="accordion-body">
+                      <div>
+                        <ul>
+                          <li *ngFor="let item of contractTypes">
+                            <div>
+                              <input type="checkbox" data-value="{{item.value}}" (change)="changeItems($event,selectedContractTypes)" class="form-check-input">
+                              <label class="form-check-label">
+                                {{item.label}}
+                              </label>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <button class="accordion-button" type="button"
+                          data-bs-toggle="collapse" aria-expanded="true"
+                          data-bs-target="#workExperienceYears">
+                    سابقه کار
+                  </button>
+                  <div id="workExperienceYears" class="accordion-collapse collapse show">
+                    <div class="accordion-body">
+                      <div>
+                        <ul>
+                          <li *ngFor="let item of workExperienceYears">
+                            <div>
+                              <input type="checkbox" data-value="{{item.value}}" (change)="changeItems($event,selectedJobWorkExperienceYears)" class="form-check-input">
+                              <label class="form-check-label">
+                                {{item.label}}
+                              </label>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <button class="accordion-button" type="button"
+                          data-bs-toggle="collapse" aria-expanded="true"
+                          data-bs-target="#salaryRequestedTypes">
+                    حقوق درخواستی
+                  </button>
+                  <div id="salaryRequestedTypes" class="accordion-collapse collapse show">
+                    <div class="accordion-body">
+                      <div>
+                        <ul>
+                          <li *ngFor="let item of salaryRequestedTypes">
+                            <div>
+                              <input type="checkbox" data-value="{{item.value}}" (change)="changeItems($event,selectedJobSalaryRequesteds)" class="form-check-input">
+                              <label class="form-check-label">
+                                {{item.label}}
+                              </label>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class=" tw-sidebar-tags-wrap">
+            <h4 class="section-head-small mb-4">تخصص های پر بازدید</h4>
+            <div class="tagcloud">
+              <a *ngFor="let item of popularTags" href="job-list.html">
+                {{item.label}}
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="twm-advertisment" style="background-image:url(../assets/images/add-bg.jpg);">
+          <div class="overlay"></div>
+          <h4 class="twm-title">
+            رزومه ساز
+          </h4>
+          <p>
+            برای ساخت رزومه حرفه ای از ما کمک بگیرید
+          </p>
+          <a [routerLink]="['/profile']" class="site-button white">
+            ایجاد رزومه
+          </a>
+        </div>
+      </div>
+
+      <div class="col-lg-8 col-md-12">
+        <div class="product-filter-wrap d-flex justify-content-between align-items-center m-b30">
+          <span class="woocommerce-result-count-left"> {{total}} موقعیت شغلی</span>
+
+          <form class="woocommerce-ordering twm-filter-select">
+            <span class="woocommerce-result-count">فیلتر</span>
+
+            <div class="dropdown bootstrap-select wt-select-bar-2 p-2">
+              <select2 [data]="pageLengths"
+                       placeholder="5"
+                       class="btn dropdown-toggle btn-light"
+                       (update)="setOption(1,$event)"
+                       [value]="pageLengthId">
+              </select2>
+            </div>
+            <div class="dropdown bootstrap-select wt-select-bar-2 p-2">
+              <select2 [data]="sortingTypes"
+                       placeholder="جدیدترین"
+                       class="btn dropdown-toggle btn-light"
+                       (update)="setOption(2,$event)"
+                       [value]="sortingTypeId">
+              </select2>
+            </div>
+          </form>
+        </div>
+
+        <div class="row">
+          <div *ngFor="let item of latest | paginate: { itemsPerPage: itemsPerPage, currentPage: page,totalItems:this.total }" class="col-lg-6 col-md-12 m-b30">
+            <div class="twm-jobs-grid-style1">
+              <div class="twm-media">
+                <img [src]="item.companyLogo">
+              </div>
+              <!--<div class="twm-jobs-category green"><span class="twm-bg-green">New</span></div>-->
+              <div class="twm-mid-content">
+                <a [routerLink]="['/job', item.id]" class="twm-job-title">
+                  <h4 [title]="item.jobTitle">
+                    {{(item.jobTitle.length>30)? (item.jobTitle | slice:0:27)+'...':(item.jobTitle) }}
+                  </h4>
+                </a>
+                <ul>
+                  <li>
+                    <span class="twm-job-address">
+                      <i class="fa fa-time opacity-06"></i>
+                      {{item.dateTimeString}}
+                    </span>
+                  </li>
+                  <li>
+                    <span class="twm-job-address">
+                      <i class="fa fa-city opacity-06"></i>
+                      {{item.cityName}}
+                    </span>
+                  </li>
+                  <li>
+                    <span class="twm-job-address">
+                      <i class="fa fa-building opacity-06"></i>
+                      {{item.companyName}}
+                    </span>
+                  </li>
+                  <li>
+                    <span class="twm-job-address">
+                      <i class="fa fa-list opacity-06"></i>
+                      {{item.jobGroupName}}
+                    </span>
+                  </li>
+                  <li>
+                    <span class="twm-job-address">
+                      <i class="fa fa-file-signature opacity-06"></i>
+                      {{item.contractTypeName}}
+                    </span>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <a class=" btn-home" [routerLink]="['/job', item.id]">
+                  <i class="fa feather-send"></i>
+                  ارسال رزومه
+                </a>
+                <a class=" btn-home" (click)="pin(item.id)">
+                  <i class="fa fa-map-pin"></i>
+                  نشان کردن
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pagination-outer">
+          <pagination-controls [responsive]="true"
+                               [previousLabel]="labels.previousLabel"
+                               [nextLabel]="labels.nextLabel"
+                               (pageChange)="onPageChange($event)"></pagination-controls>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

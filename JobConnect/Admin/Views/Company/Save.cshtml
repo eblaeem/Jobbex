@@ -1,0 +1,159 @@
+﻿@model ViewModel.Company.CompanySave
+@{
+    ViewBag.Title = " مشخصات شرکت";
+}
+<section class="ftco-section">
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading wt-panel-heading p-a20">
+                <h4 class="panel-tittle m-a0">
+                    <i class="fa fa-list"></i>
+                    @ViewBag.Title
+                </h4>
+            </div>
+            <div class="panel-body wt-panel-body p-a20 m-b30 ">
+
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">
+                            مشخصات شرکت
+                        </button>
+                        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">
+                            تصاویر
+                        </button>
+                    </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active mt-2 pt-2" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                        <form id="company-save-form">
+                            <div class="row col-md-12">
+                                <div class="col-md-6">
+                                    <div class="form-group row col-md-12">
+                                        <label class="label-control col-md-4" asp-for="Title"></label>
+                                        <div class="col-md-8">
+                                            <input class="form-control" asp-for="Title">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row col-md-12">
+                                        <label class="label-control col-md-4" asp-for="PhoneNumber"></label>
+                                        <div class="col-md-8">
+                                            <input class="form-control" dir="ltr" asp-for="PhoneNumber">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row col-md-12">
+                                        <label class="label-control col-md-4" asp-for="WebSite"></label>
+                                        <div class="col-md-8">
+                                            <input class="form-control" dir="ltr" asp-for="WebSite">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row col-md-12">
+                                        <label class="label-control col-md-4" asp-for="CreatedYear"></label>
+                                        <div class="col-md-8">
+                                            <input class="form-control" asp-for="CreatedYear">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row col-md-12">
+                                        <label class="label-control col-md-4" asp-for="ServiceAndProducs"></label>
+                                        <div class="col-md-8">
+                                            <textarea class="form-control" rows="5" asp-for="ServiceAndProducs">
+                                             </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row col-md-12">
+                                        <label class="label-control col-md-4" asp-for="OrganizationSizeId"></label>
+                                        <div class="col-md-8">
+                                            <app-select asp-for="OrganizationSizeId" key="@Model.OrganizationSizeId" asp-items="@Model.OrganizationSizes"></app-select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row col-md-12">
+                                        <label class="label-control col-md-4" asp-for="CityId"></label>
+                                        <div class="col-md-8">
+                                            <app-select asp-for="CityId" key="@Model.CityId" asp-items="@Model.Cities"></app-select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row col-md-12">
+                                        <label class="label-control col-md-4" asp-for="JobGroupId"></label>
+                                        <div class="col-md-8">
+                                            <app-select asp-for="JobGroupId" key="@Model.JobGroupId" asp-items="@Model.JobGroups"></app-select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row col-md-12">
+                                <div class="form-group row col-md-12">
+                                    <label class="label-control col-md-2 mt-5" asp-for="Description"></label>
+                                    <div class="col-md-10">
+                                        <textarea class="form-control" rows="5" asp-for="Description">
+                                          </textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-footer text-center">
+                                <a href="/" class="btn btn-warning active">
+                                    بازگشت
+                                </a>
+                                <a id="submit" class="btn btn-success ">
+                                    <i class="fa fa-sign-in-alt"></i>
+                                    ثبت
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                        <div class="form-group row col-md-12">
+                            <label for="attachment-logo-upload" class="drop-container col-md-4">
+                                <span class="drop-title">
+                                    <label asp-for="AttachmentLogoId"></label>
+                                    @if (Model.AttachmentLogoId != null)
+                                    {
+                                        <img style="width:90px;height:90px" src="@Model.AttachmentLogoString" />
+                                    }
+                                </span>
+                                <input type="file" id="attachment-logo-upload" accept="image/*">
+                            </label>
+                            <label for="attachment-background-upload" class="drop-container col-md-4">
+                                <span class="drop-title">
+                                    <label asp-for="AttachmentBackgroundId"></label>
+                                    @if (Model.AttachmentBackgroundId != null)
+                                    {
+                                        <img style="width:90px;height:90px" src="@Model.AttachmentBackgroundString" />
+                                    }
+                                </span>
+                                <input type="file" id="attachment-background-upload" accept="image/*">
+                            </label>
+                            <div class="col-md-4">
+                                <label for="attachment-background-upload" class="drop-container">
+                                    <span class="drop-title">
+                                        <label>سایر تصاویر</label>
+                                    </span>
+                                    <input type="file" id="attachment-others" multiple="" accept="image/*">
+                                </label>
+                                <div class="mt-1 row col-md-12">
+                                    @if (Model.Attachments != null && Model.Attachments.Any())
+                                    {
+                                        foreach (var item in Model.Attachments)
+                                        {
+                                            <div class="img-thumbnail col-md-12 m-2">
+                                                <a class="btn" data-id="@item.Id">
+                                                    <i class="fa fa-times"></i>
+                                                </a>
+                                                <img style="width:90px;height:90px" src="@item.Label" />
+                                            </div>
+                                        }
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script type="systemjs-module" src="/dist/company-save.js"></script>

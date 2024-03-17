@@ -1,0 +1,176 @@
+
+<!--[ngStyle]="{'background-image':'url('+ response.companyBackground +')'}"-->
+<div class="section-full p-t20  p-b20 site-bg-white">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 col-md-12">
+        <div class="twm-right-section-panel site-bg-gray">
+          <div class="wt-admin-right-page-header">
+            <h2>
+              {{response.name}}
+            </h2>
+
+            <app-read-more [text]="response.description" [maxLength]="60"></app-read-more>
+          </div>
+          <div class="twm-dash-b-blocks mb-5">
+            <div class="row">
+              <div class="col-xl-6 col-lg-6 col-md-12 mb-3">
+                <div class="panel panel-default">
+                  <div class="panel-body wt-panel-body dashboard-card-2 block-gradient-2">
+                    <div class="wt-card-wrap-2">
+                      <div class="wt-card-icon-2">
+                        <i class="flaticon-job"></i>
+                      </div>
+                      <div class="wt-card-right wt-total-active-listing counter ">
+                        {{activeJobs.length}}
+                      </div>
+                      <div class="wt-card-bottom-2 ">
+                        <h4 class="m-b0">موقعیت های شغلی فعال</h4>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-6 col-lg-6 col-md-12 mb-3">
+                <div class="panel panel-default">
+                  <div class="panel-body wt-panel-body dashboard-card-2 block-gradient-3">
+                    <div class="wt-card-wrap-2">
+                      <div class="wt-card-icon-2">
+                        <i class="flaticon-bell"></i>
+                      </div>
+                      <div class="wt-card-right wt-total-listing-bookmarked counter ">
+                        {{expiredJobs.length}}
+                      </div>
+                      <div class="wt-card-bottom-2">
+                        <h4 class="m-b0">موقعیت های منقضی شده</h4>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="twm-candidates-list-wrap">
+          <div class="panel panel-default site-bg-white">
+            <div class="panel-heading wt-panel-heading p-a20">
+              <h4 class="panel-tittle m-a0">
+                <i class="far fa-chart-bar"></i>
+                موقعیت های شغلی
+              </h4>
+            </div>
+            <div class="panel-body wt-panel-body twm-pro-view-chart">
+
+              <div class="twm-tabs-style-2">
+                <ul class="nav nav-tabs" id="myTab2" role="tablist">
+                  <li class="nav-item">
+                    <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#active-jobs" type="button">
+                      <i class="fas fa-user-tie"></i>
+                      فعال
+                    </button>
+                  </li>
+                  <li class="nav-item">
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#expired-jobs" type="button">
+                      <i class="fas fa-building"></i>
+                      منقضی شده
+                    </button>
+                  </li>
+                </ul>
+                <br />
+                <div class="tab-content" id="myTab2Content">
+                  <div class="tab-pane fade show active" id="active-jobs">
+                    <ul>
+                      <li *ngFor="let item of activeJobs">
+                        <div class="twm-candidates-list-style1 mb-5">
+                          <div class="twm-media">
+                            <div class="twm-media-pic">
+                              <img [src]="response.companyLogo" alt="#">
+                            </div>
+                            <div class="twm-candidates-tag">
+                              <span>
+                                {{item.statusName}}
+                              </span>
+                            </div>
+                          </div>
+                          <div class="twm-mid-content">
+                            <a [routerLink]="['/job', item.id]" class="twm-job-title">
+                              <h4>
+                                {{item.jobTitle}}
+                              </h4>
+                            </a>
+                            <p>
+                              {{item.jobGroupName}}
+                            </p>
+                            <div class="twm-fot-content">
+                              <div class="twm-left-info">
+                                <p class="twm-candidate-address">
+                                  <i class="feather-map-pin"></i>
+                                  {{item.cityName}}
+                                </p>
+                                <div class="twm-jobs-vacancies">
+                                  {{item.dateTimeString}}
+                                </div>
+                              </div>
+                              <div class="twm-right-btn">
+                                <a class="twm-view-prifile site-text-primary">مشاهده</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="tab-pane fade" id="expired-jobs">
+                    <ul>
+                      <li *ngFor="let item of expiredJobs">
+                        <div class="twm-candidates-list-style1 mb-5">
+                          <div class="twm-media">
+                            <div class="twm-media-pic twm-media">
+                              <img class="img-thumbnail" [src]="response.companyLogo" alt="#">
+                            </div>
+                            <div class="twm-candidates-tag">
+                              <span>
+                                {{item.statusName}}
+                              </span>
+                            </div>
+                          </div>
+                          <div class="twm-mid-content">
+                            <a href="candidate-detail.html" class="twm-job-title">
+                              <h4>
+                                {{item.jobTitle}}
+                              </h4>
+                            </a>
+                            <p>
+                              {{item.jobGroupName}}
+                            </p>
+                            <div class="twm-fot-content">
+                              <div class="twm-left-info">
+                                <p class="twm-candidate-address">
+                                  <i class="feather-map-pin"></i>
+                                  {{item.cityName}}
+                                </p>
+                                <div class="twm-jobs-vacancies">
+                                  {{item.dateTimeString}}
+                                </div>
+                              </div>
+                              <div class="twm-right-btn">
+                                <a class="twm-view-prifile site-text-primary">مشاهده</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

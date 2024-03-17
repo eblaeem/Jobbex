@@ -1,0 +1,84 @@
+<!--[ngStyle]="{'left':isAuthUserLoggedIn ? '15%' : '0%' }"-->
+<header *ngIf="visible" class="site-header header-style-3 mobile-sider-drawer-menu">
+  <div class="sticky-header main-bar-wraper navbar-expand-lg">
+    <div class="main-bar">
+      <div class="container-fluid clearfix">
+        <button id="mobile-side-drawer" data-target=".header-nav" data-toggle="collapse" type="button" class="navbar-toggler collapsed">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar icon-bar-first"></span>
+          <span class="icon-bar icon-bar-two"></span>
+          <span class="icon-bar icon-bar-three"></span>
+        </button>
+
+
+        <div class="nav-animation header-nav navbar-collapse collapse d-flex justify-content-center">
+          <ul class=" nav navbar-nav">
+            <li>
+              <a [routerLink]="['/home']" [routerLinkActive]="['is-active']">صفحه اصلی</a>
+            </li>
+            <li>
+              <a [routerLink]="['/jobs']" [routerLinkActive]="['is-active']">موقعیت های شغلی</a>
+            </li>
+            <!--<li>
+              <a [routerLink]="['/profile']" [routerLinkActive]="['is-active']">رزومه ساز</a>
+            </li>-->
+            <li>
+              <a href="http://admin.jobbex.ir" target="_blank" [routerLinkActive]="['is-active']">
+                بخش کارفرمایان
+              </a>
+            </li>
+            <li *ngIf="isAuthUserLoggedIn" class="has-child">
+              <a href="javascript:;" style="background-color: #e0eeff; color: #1967d2; font-size: 16px; border-radius: 10px;display: block;padding-right:20px;">
+                {{displayName}}
+              </a>
+              <ul class="sub-menu">
+                <li>
+                  <a [routerLink]="['/profile']">پروفایل</a>
+                </li>
+                <li>
+                  <a [routerLink]="['/resumeh']">مشاهده رزومه</a>
+                </li>
+                <li>
+                  <a [routerLink]="['/user-pin-jobs']"> نشان شده های من</a>
+                </li>
+                <li>
+                  <a [routerLink]="['/job-recommended']">پیشنهادهای شغلی</a>
+                </li>
+                <li>
+                  <a (click)="logOut()">خروج</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+
+        </div>
+
+        <div class="extra-nav header-2-nav">
+          <div class="extra-cell">
+            <div *ngIf="!isAuthUserLoggedIn" class="header-nav-btn-section">
+              <div class="twm-nav-btn-left">
+                <a class="twm-nav-sign-up" [routerLink]="['/login']">
+                  <i class="feather-log-in"></i>
+                  ورود
+                </a>
+              </div>
+              <div class="twm-nav-btn-right">
+                <a [routerLink]="['/register']" class="twm-nav-post-a-job">
+                  <i class="feather-briefcase"></i>
+                  ثبت نام
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="logo-header">
+          <div class="logo-header-inner logo-header-one">
+            <a href="/">
+              <img src="../assets/images/{{logoName}}" alt="">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

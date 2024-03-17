@@ -1,0 +1,96 @@
+﻿@model ViewModel.Company.CompanyJobFilter
+@{
+    ViewBag.Title = " آگهی های شغلی";
+}
+<section class="ftco-section col-md-12">
+    <div class="panel panel-default">
+        <div class="panel-heading wt-panel-heading p-a10">
+            <h4 class="panel-tittle m-a0">
+                <i class="fa fa-list"></i>
+                @ViewBag.Title
+            </h4>
+        </div>
+        <div class="panel-body wt-panel-body p-a10 m-b30 ">
+            <div class="row col-md-12">
+                <div class="col-md-3">
+                    <form id="job-form">
+                        <div class="form-group row col-md-12">
+                            <div class="col-md-12">
+                                <input class="form-control" asp-for="JobTitle" placeholder="عنوان آگهی" />
+                            </div>
+                        </div>
+                        <div class="form-group row col-md-12">
+                            <div class="col-md-12">
+                                <app-select asp-for="JobGroupId" asp-items="@Model.JobGroups"></app-select>
+                            </div>
+                        </div>
+                        <div class="form-group row col-md-12">
+                            <div class="col-md-12">
+                                <app-select asp-for="CityId" asp-items="@Model.Cities"></app-select>
+                            </div>
+                        </div>
+                        <div class="form-group row col-md-12">
+                            <div class="col-md-12">
+                                <app-select asp-for="ContractTypeId" asp-items="@Model.ContractTypes"></app-select>
+                            </div>
+                        </div>
+                        <div class="form-group row col-md-12">
+                            <div class="col-md-12">
+                                <app-select asp-for="SalaryRequestedId" asp-items="@Model.SalaryRequesteds"></app-select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row col-md-12">
+                            <div class="col-md-12">
+                                <app-select asp-for="WorkExperienceYearId" asp-items="@Model.WorkExperienceYears"></app-select>
+                            </div>
+                        </div>
+                        <div class="form-group row col-md-12">
+                            <div class="col-md-12">
+                                <app-select asp-for="PageSize" key="@Model.PageSize" asp-items="@Model.PageLengths"></app-select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row col-md-12 text-center">
+                            <a id="search-form" class="btn btn-success ">
+                                <i class="fa fa-search"></i>
+                                جستجو
+                            </a>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-9">
+                    <a href="/job/save" class="btn btn-primary mb-2">
+                        <i class="fa fa-plus"></i>
+                        ایجاد آگهی
+                    </a>
+
+                    <div class="row">
+                        <div class="twm-pro-view-chart-wrap col-md-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading wt-panel-heading p-a10">
+                                    <h4 class="panel-tittle m-a0">
+                                        <i class="fa fa-list"></i>
+                                        @ViewBag.Title
+                                        @*<span>@Model.TotalRowNumber</span>*@
+                                    </h4>
+                                </div>
+                                <div class="panel-body wt-panel-body p-a5 m-b10 table-response" id="response">
+                                    @if (Model.Latest != null)
+                                    {
+                                        <partial name="~/Views/Job/_Get.cshtml" model="@Model.Latest" />
+                                    }
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script type="systemjs-module" src="/dist/company-job.js"></script>

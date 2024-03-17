@@ -1,0 +1,100 @@
+<div class="section-full p-t20  p-b20 site-bg-white">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 col-md-12 rightSidebar">
+        <div class="side-bar p-1">
+          <div class="widget all_services_list">
+            <h4 class="section-head-small mb-4">
+              دسته بندی شرکتها
+            </h4>
+            <div class="all_services m-b30">
+              <ul>
+                <li *ngFor="let item of groupsCompany">
+                  <a [routerLink]="['/company', item.id]">
+                    {{item.groupName}}
+                  </a>
+                  <span class="badge">
+                    {{item.groupCount}}
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-9 col-md-12">
+        <div class="product-filter-wrap d-flex justify-content-between align-items-center m-b30">
+          <span class="woocommerce-result-count-left"> {{total}} تعداد شرکتها</span>
+        </div>
+        <div class="masonry-wrap row d-flex">
+          <div *ngFor="let item of response | paginate: { itemsPerPage: itemsPerPage, currentPage: page,totalItems:this.total }" class="masonry-item col-lg-6 col-md-12">
+            <div class="blog-post twm-blog-post-1-outer">
+              <div class="wt-post-media">
+                <a href="blog-single.html">
+                  <img style="max-height:180px;" src="../assets/images/blog/latest/bg1.jpg" alt="">
+                </a>
+              </div>
+              <div class="wt-post-info">
+                <div class="wt-post-meta ">
+                  <ul>
+                    <li class="post-date">
+                      {{item.name}}
+                    </li>
+                  </ul>
+                </div>
+                <div class="wt-post-meta ">
+                  <ul>
+                    <li>
+                      <span class="twm-job-address">
+                        <i class="fa fa-calendar-times opacity-06"></i>
+                        اندازه سازمان
+                      </span>
+                      <span>
+                        {{item.organizationSizeName}}
+                      </span>
+                    </li>
+                    <li>
+                      <span class="twm-job-address">
+                        <i class="fa fa-city opacity-06"></i>
+                        گروه شغلی
+                      </span>
+                      <span>
+                        {{item.jobGroupName}}
+                      </span>
+                    </li>
+                    <li>
+                      <span class="twm-job-address">
+                        <i class="fa fa-building opacity-06"></i>
+                        موقعیت شغلی های فعال
+                      </span>
+                      <span>
+                        {{item.activeJobCount}}
+                      </span>
+                    </li>
+
+                    <li>
+                      <span class="twm-job-address">
+                        <i class="fa fa-file-signature opacity-06"></i>
+                        <a href="{{item.webSite}}" class="site-button-link site-text-primary">وب سایت شرکت</a>
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+                <app-read-more [text]="item.description" [maxLength]="60"></app-read-more>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="pagination-outer">
+          <pagination-controls [responsive]="true"
+                               [previousLabel]="labels.previousLabel"
+                               [nextLabel]="labels.nextLabel"
+                               (pageChange)="onPageChange($event)"></pagination-controls>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

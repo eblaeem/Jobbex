@@ -1,0 +1,261 @@
+
+<div class="section-full  p-t20 p-b20 bg-white">
+  <div class="container">
+    <div class="section-content">
+      <div class="row d-flex justify-content-center">
+        <div class="col-lg-4 col-md-12 rightSidebar">
+          <div class="side-bar mb-4">
+            <div class="twm-s-info2-wrap mb-5">
+              <div class="twm-s-info2">
+                <h4 class="section-head-small mb-4">
+                  اطلاعات تکمیلی
+                </h4>
+                <ul class="twm-job-hilites2">
+                  <li>
+                    <div class="twm-s-info-inner">
+                      <i class="fas fa-calendar-alt"></i>
+                      <span class="twm-title">عنوان شرکت</span>
+                      <div class="twm-s-info-discription">
+                        {{response.companyName}}
+                      </div>
+                    </div>
+                  </li>
+
+                  <li>
+                    <div class="twm-s-info-inner">
+                      <i class="fas fa-calendar-alt"></i>
+                      <span class="twm-title">نوع همکاری</span>
+                      <div class="twm-s-info-discription">
+                        {{response.contractTypeName}}
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="twm-s-info-inner">
+                      <i class="fas fa-map-marker-alt"></i>
+                      <span class="twm-title">حداقل تحصیلات</span>
+                      <div class="twm-s-info-discription">
+                        {{response.educationLevelRequiredTitle}}
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="twm-s-info-inner">
+                      <i class="fas fa-user-tie"></i>
+                      <span class="twm-title">جنسیت</span>
+                      <div class="twm-s-info-discription">
+                        {{response.genderRequiredTitle}}
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="twm-s-info-inner">
+                      <i class="fas fa-clock"></i>
+                      <span class="twm-title">حقوق</span>
+                      <div class="twm-s-info-discription">
+                        {{response.salaryRequestedName}}
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="twm-s-info-inner">
+                      <i class="fas fa-suitcase"></i>
+                      <span class="twm-title">
+                        حداقل سابقه کاری
+                      </span>
+                      <div class="twm-s-info-discription">
+                        {{response.workExperienceYearTitle}}
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="twm-s-info-inner">
+                      <i class="fas fa-calendar-day"></i>
+                      <span class="twm-title">روزهای کاری</span>
+                      <div class="twm-s-info-discription">
+                        {{response.workingDays}}
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!--<div class="widget tw-sidebar-tags-wrap">
+              <h4 class="section-head-small mb-4">مهارت های مورد نیاز</h4>
+                <div class="tagcloud">
+                <a *ngFor="let item of jobSkill" href="javascript:void(0)">
+                  {{item.label}}
+                </a>
+              </div>
+            </div>-->
+          </div>
+          <div class="twm-s-info3-wrap mb-5">
+            <div class="twm-s-info3">
+              <div class="twm-s-info-logo-section">
+                <div class="twm-media">
+                  <img [src]="response.companyLogo">
+                </div>
+                <h4 class="twm-title">مشخصات شرکت</h4>
+              </div>
+              <ul>
+                <li>
+                  <div class="twm-s-info-inner">
+                    <i class="fas fa-building"></i>
+                    <span class="twm-title">عنوان </span>
+                    <div class="twm-s-info-discription">
+                      {{response.companyName}}
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="twm-s-info-inner">
+                    <i class="fas fa-desktop"></i>
+                    <span class="twm-title">سال تاسیس</span>
+                    <div class="twm-s-info-discription">
+                      {{response.companyCreatedYear}}
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="twm-s-info-inner">
+                    <i class="fas fa-desktop"></i>
+                    <span class="twm-title">اندازه سازمان</span>
+                    <div class="twm-s-info-discription">
+                      {{response.companyOrganizationSize}}
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="twm-s-info-inner">
+                    <i class="fas fa-desktop"></i>
+                    <span class="twm-title">وب سایت</span>
+                    <div class="twm-s-info-discription">
+                      {{response.webSite}}
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="twm-s-info-inner">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span class="twm-title">خلاصه فعالیت</span>
+                    <app-read-more [text]="response.companyDescription" [maxLength]="100"></app-read-more>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-8 col-md-12">
+          <div class="cabdidate-de-info">
+            <div class="twm-job-self-wrap">
+              <div class="twm-job-self-info">
+                <div class="twm-job-self-top">
+                  <div>
+                    <div class="row col-md-12">
+                      <div class="col-md-6">
+                        <h4 class="twm-job-title">
+                          {{response.jobTitle}}
+                        </h4>
+                        <ul class="list-unstyled">
+                          <li>
+                            گروه شغلی:
+                            <span class="twm-job-post-duration">
+                              {{response.jobGroupName}}
+                            </span>
+                          </li>
+                          <li>
+                            تاریخ:
+                            <span class="twm-job-post-duration">
+                              {{response.dateTimeString}}
+                            </span>
+                          </li>
+                          <li>
+                            شهر:
+                            <span class="twm-job-post-duration">
+                              {{response.cityName}}
+                            </span>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="sidebar-elements search-bx">
+                          <form [formGroup]="jobRequestForm">
+                            <div class="form-group">
+                              <h4 class="section-head-small">نام نام خانوادگی</h4>
+                              <div class="input-group">
+                                <input class="form-control" name="displayName" formControlName="displayName" />
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <h4 class="section-head-small">شماره همراه</h4>
+                              <div class="input-group">
+                                <input class="form-control" name="phoneNumber" formControlName="phoneNumber" />
+                              </div>
+                            </div>
+
+                            <div class="form-group">
+                              <h4 class="section-head-small">فایل رزومه</h4>
+                              <div class="input-group">
+                                <input type="file" class="form-control" id="resume-file-upload" />
+                                <button class="btn" type="button">
+                                  <i class="feather-map-pin"></i>
+                                </button>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <a class="site-button" (click)="jobRequest(response.id)" role="button">
+                                <i class="fas fa-save"></i>
+                                ارسال درخواست
+                              </a>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr />
+            <h4 class="twm-s-title">شرح شغل مورد نیاز:</h4>
+            <p [innerHTML]="response.description">
+            </p>
+
+            <div *ngIf="jobSkill.length>0">
+              <h4 class="twm-s-title">مهارت های مورد نیاز:</h4>
+              <ul class="description-list-2">
+                <li *ngFor="let item of jobSkill">
+                  <a class="popular-search ng-star-inserted">
+                    {{item.label}}
+                    <i class="feather-check"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+
+            <div class="twm-two-part-section" *ngIf="companyAttachments.length>0">
+              <div class="row">
+                <div class="col-md-12">
+                  <h4 class="twm-s-title">برخی از تصاویر شرکت</h4>
+                  <div class="tw-sidebar-gallery">
+                    <ul>
+                      <li *ngFor="let item of companyAttachments">
+                        <div class="tw-service-gallery-thumb">
+                          <a class="elem" (click)="showImage(item)">
+                            <img [src]="item">
+                            <i class="fa fa-file-image"></i>
+                          </a>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

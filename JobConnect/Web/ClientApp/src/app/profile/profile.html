@@ -1,0 +1,918 @@
+<div class="section-full p-t20  p-b20 site-bg-white">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-3 col-lg-4 col-md-12 rightSidebar m-b30">
+        <div class="side-bar-st-1">
+          <div class="twm-candidate-profile-pic">
+            <img [src]="userProfileImage" alt="">
+            <div class="upload-btn-wrapper">
+              <div id="upload-image-grid"></div>
+              <button class="site-button button-sm">
+                آپلود تصویر
+              </button>
+              <input type="file" (change)="uploadProfile($event)" accept=".jpg, .jpeg, .png">
+            </div>
+          </div>
+          <div class="twm-mid-content text-center">
+            <a class="twm-job-title">
+              <h4>
+                {{displayName}}
+              </h4>
+            </a>
+          </div>
+          <div class="twm-nav-list-1">
+            <ul class="nav nav-tabs">
+              <li>
+                <a class="nav-link active" data-bs-toggle="tab" data-bs-target="#information">
+                  <i class="fa fa-user"></i>
+                  مشخصات تکمیلی
+                </a>
+              </li>
+              <li>
+                <a class="nav-link " data-bs-toggle="tab" data-bs-target="#education">
+                  <i class="fa fa-graduation-cap"></i>
+                  سوابق تحصیلی/آموزشی
+                </a>
+              </li>
+              <li>
+                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#job">
+                  <i class="fa fa-tasks"></i>
+                  سوابق شغلی
+                </a>
+              </li>
+              <li>
+                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#language">
+                  <i class="fa fa-language"></i>
+                  اطلاعات زبان ها
+                </a>
+              </li>
+              <li>
+                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#skills">
+                  <i class="fa fa-map"></i>
+                  مهارت های شغلی
+                </a>
+              </li>
+              <li>
+                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#priorities">
+                  <i class="fa fa-level-up-alt"></i>
+                  الویت های شغلی
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-9 col-lg-8 col-md-12 m-b30">
+        <div class="tab-content">
+          <div class="tab-pane fade active show" id="information" role="tabpanel">
+            <div class="twm-right-section-panel site-bg-gray">
+              <form [formGroup]="infoProfile" (ngSubmit)="saveProfile()">
+                <div class="panel panel-default">
+                  <div class="panel-body wt-panel-body p-a20 m-b30 ">
+                    <div class="row">
+                      <div class="col-xl-6 col-lg-6 col-md-12">
+                        <div class="form-group">
+                          <label>نام</label>
+                          <div class="ls-inputicon-box">
+                            <input class="form-control" placeholder="نام" name="firstName" formControlName="firstName">
+                            <i class="fs-input-icon fa fa-light fa-users"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xl-6 col-lg-6 col-md-12">
+                        <div class="form-group">
+                          <label>نام خانوادگی</label>
+                          <div class="ls-inputicon-box">
+                            <input class="form-control" placeholder="نام خانوادگی" name="lastName" formControlName="lastName">
+                            <i class="fs-input-icon fa fa-light fa-users"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xl-6 col-lg-6 col-md-12">
+                        <div class="form-group">
+                          <label>جنسیت</label>
+                          <div class="ls-inputicon-box">
+                            <select2 placeholder="جنسیت"
+                                     [data]="genders"
+                                     class="btn dropdown-toggle btn-light form-control"
+                                     (update)="setOption(1,$event)"
+                                     [value]="genderId">
+                            </select2>
+                            <i class="fs-input-icon fa fa-light fa-list"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xl-6 col-lg-6 col-md-12">
+                        <div class="form-group">
+                          <label>وضعیت تاهل</label>
+                          <div class="ls-inputicon-box">
+                            <select2 placeholder="وضعیت تاهل"
+                                     [data]="maritalStatus"
+                                     class="btn dropdown-toggle btn-light form-control"
+                                     (update)="setOption(2,$event)"
+                                     [value]="maritalStateId">
+                            </select2>
+                            <i class="fs-input-icon fa fa-light fa-list"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xl-4 col-lg-6 col-md-12">
+                        <div class="form-group city-outer-bx has-feedback">
+                          <label>وضعیت نظام وظیفه</label>
+                          <div class="ls-inputicon-box">
+                            <select2 placeholder="وضعیت نظام وظیفه"
+                                     class="btn dropdown-toggle btn-light form-control"
+                                     [data]="militaryStatus"
+                                     (update)="setOption(3,$event)"
+                                     [value]="militaryStateId">
+                            </select2>
+                            <i class="fs-input-icon fa fa-light fa-list"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xl-4 col-lg-6 col-md-12">
+                        <div class="form-group city-outer-bx has-feedback">
+                          <label>شهر</label>
+                          <div class="ls-inputicon-box">
+                            <select2 placeholder="شهر"
+                                     [data]="cities"
+                                     class="btn dropdown-toggle btn-light form-control"
+                                     [value]="cityId"
+                                     (update)="setOption(4,$event)"
+                                     resettable>
+                            </select2>
+                            <i class="fs-input-icon fa fa-light fa-building"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xl-4 col-lg-12 col-md-12">
+                        <div class="form-group city-outer-bx has-feedback">
+                          <label>تاریخ تولد</label>
+                          <div class="ls-inputicon-box">
+                            <ng-persian-datepicker>
+                              <input class="form-control" placeholder="" name="birthDate" formControlName="birthDate">
+                            </ng-persian-datepicker>
+                            <i class="fs-input-icon fa fa-light fa-birthday-cake"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xl-4 col-lg-6 col-md-12">
+                        <div class="form-group city-outer-bx has-feedback">
+                          <label>ایمیل</label>
+                          <div class="ls-inputicon-box">
+                            <input class="form-control" name="email" formControlName="email">
+                            <i class="fs-input-icon fa fa-light fa-envelope"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xl-4 col-lg-6 col-md-12">
+                        <div class="form-group city-outer-bx has-feedback">
+                          <label>شماره تماس</label>
+                          <div class="ls-inputicon-box">
+                            <input class="form-control" name="phoneNumber" formControlName="phoneNumber">
+                            <i class="fs-input-icon fa fa-light fa-phone"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xl-4 col-lg-6 col-md-12">
+                        <div class="form-group city-outer-bx has-feedback">
+                          <label>حقوق درخواستی</label>
+                          <div class="ls-inputicon-box">
+                            <select2 placeholder="حقوق درخواستی"
+                                     [data]="salaryRequesteds"
+                                     [value]="salaryRequestedId"
+                                     (update)="setOption(5,$event)"
+                                     class="btn dropdown-toggle btn-light form-control"
+                                     resettable>
+                            </select2>
+                            <i class="fs-input-icon fa fa-light fa-dollar-sign"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xl-12 col-lg-12 col-md-12">
+                        <div class="form-group city-outer-bx has-feedback">
+                          <label>درباره خودم!</label>
+                          <div class="ls-inputicon-box">
+                            <textarea rows="2" class="form-control" name="description" formControlName="description">
+                            </textarea>
+                            <i class="fs-input-icon fas fa-map-marker-alt"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-12 col-md-12">
+                        <div class="text-center">
+                          <button type="submit" class="site-button">
+                            <i class="fs-input-icon fas fa-save"></i>
+                            ذخیره
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="education" role="tabpanel">
+            <div class="twm-right-section-panel site-bg-gray">
+              <div class="text-right m-2  mb-3">
+                <a (click)="educationModal(null)" class="twm-jobs-category green m-1 p-1">
+                  <span class="twm-bg-green">
+                    <i class="fa fa-plus"></i>
+                    ایجاد
+                  </span>
+                </a>
+              </div>
+              <div class="twm-company-approch-outer">
+                <div class="twm-company-approch">
+                  <div class="twm-jobs-list-wrap" *ngIf="userEducations.length>0">
+                    <ul>
+                      <li *ngFor="let education of userEducations">
+                        <div class="twm-jobs-list-style1 mb-2">
+                          <div class="twm-mid-content fit-width">
+                            <div class="row col-md-12">
+                              <div class="col-md-6">
+                                <div>
+                                  <span class="twm-mid-content-title">
+                                    <i class="feather-check"></i>
+                                    مقطع تحصیلی
+                                  </span>
+                                  :{{education.degree}}
+                                </div>
+                                <div>
+                                  <span class="twm-mid-content-title">
+                                    <i class="feather-check"></i>
+                                    نام دانشگاه/موسسه آموزشی
+                                  </span>
+                                  :{{education.universityName}}
+                                </div>
+                                <div>
+                                  <span class="twm-mid-content-title">
+                                    <i class="feather-check"></i>
+                                    رشته تحصیلی
+                                  </span>
+                                  :{{education.field}}
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div>
+                                  <span class="twm-mid-content-title">
+                                    <i class="feather-check"></i>
+                                    توضیحات
+                                  </span>
+                                  :{{education.description}}
+                                </div>
+                                <div>
+                                  <span class="twm-mid-content-title">
+                                    <i class="feather-check"></i>
+                                    تاریخ شروع
+                                  </span>
+                                  :{{education.startDate}}
+                                </div>
+                                <div>
+                                  <span class="twm-mid-content-title">
+                                    <i class="feather-check"></i>
+                                    تاریخ خاتمه
+                                  </span>
+                                  :{{education.endDate}}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="twm-left-content">
+                            <a (click)="educationModal(education)" class="twm-jobs-category green m-1">
+                              <span class="twm-bg-green">
+                                <i class="fa fa-edit"></i>
+                                ویرایش
+                              </span>
+                            </a>
+                            <a (click)="deleteEducation(education.id)" class="twm-jobs-category brown m-1">
+                              <span class="twm-bg-brown">
+                                <i class="fa fa-trash"></i>
+                                حذف
+                              </span>
+                            </a>
+                          </div>
+                        </div>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="job" role="tabpanel">
+            <div class="twm-right-section-panel site-bg-gray">
+              <div class="text-right m-2  mb-3">
+                <a (click)="jobModal(null)" class="twm-jobs-category green m-1 p-1">
+                  <span class="twm-bg-green">
+                    <i class="fa fa-plus"></i>
+                    ایجاد
+                  </span>
+                </a>
+              </div>
+              <div class="twm-company-approch-outer">
+                <div class="twm-company-approch">
+                  <div class="twm-jobs-list-wrap" *ngIf="userJobs.length>0">
+                    <ul>
+                      <li *ngFor="let job of userJobs">
+                        <div class="twm-jobs-list-style1 mb-2">
+                          <div class="twm-mid-content">
+                            <div class="row col-md-12">
+                              <div class="col-md-6">
+                                <div>
+                                  <span class="twm-mid-content-title">
+                                    <i class="feather-check"></i>
+                                    عنوان شغل
+                                  </span>
+                                  :{{job.jobTitle}}
+                                </div>
+                                <div>
+                                  <span class="twm-mid-content-title">
+                                    <i class="feather-check"></i>
+                                    سمت
+                                  </span>
+                                  :{{job.position}}
+                                </div>
+                                <div>
+                                  <span class="twm-mid-content-title">
+                                    <i class="feather-check"></i>
+                                    نام شرکت
+                                  </span>
+                                  :{{job.companyName}}
+                                </div>
+                                <div>
+                                  <span class="twm-mid-content-title">
+                                    <i class="feather-check"></i>
+                                    تاریخ شروع
+                                  </span>
+                                  :{{job.startDate}}
+                                </div>
+                                <div>
+                                  <span class="twm-mid-content-title">
+                                    <i class="feather-check"></i>
+                                    تاریخ خاتمه
+                                  </span>
+
+                                  :{{job.endDate}}
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div>
+                                  <span class="twm-mid-content-title">
+                                    <i class="feather-check"></i>
+                                    شهر
+                                  </span>
+
+                                  :{{job.city}}
+                                </div>
+                                <div>
+                                  <span class="twm-mid-content-title">
+                                    <i class="feather-check"></i>
+                                    گروه شغلی
+                                  </span>
+                                  :{{job.jobGroupName}}
+                                </div>
+                                <div>
+                                  <span class="twm-mid-content-title">
+                                    <i class="feather-check"></i>
+                                    توضیحات
+                                  </span>
+                                  :{{job.description}}
+                                </div>
+                                <div>
+                                  <span class="twm-mid-content-title">
+                                    <i class="feather-check"></i>
+                                    محل کار فعلی
+                                  </span>
+                                  <span *ngIf="job.isCurrentJob">
+                                    <i class="fa fa-check"></i>
+                                  </span>
+                                  <span *ngElse>
+                                    <i class="fa fa-times"></i>
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="twm-left-content">
+                            <a (click)="jobModal(job)" class="twm-jobs-category green m-1">
+                              <span class="twm-bg-green">
+                                <i class="fa fa-edit"></i>
+                                ویرایش
+                              </span>
+                            </a>
+                            <a (click)="deleteJob(job.id)" class="twm-jobs-category brown m-1">
+                              <span class="twm-bg-brown">
+                                <i class="fa fa-trash"></i>
+                                حذف
+                              </span>
+                            </a>
+                          </div>
+                        </div>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="language" role="tabpanel">
+            <div class="twm-right-section-panel site-bg-gray">
+              <div class="text-right m-2  mb-3">
+                <a (click)="languageModal(null)" class="twm-jobs-category green m-1 p-1">
+                  <span class="twm-bg-green">
+                    <i class="fa fa-plus"></i>
+                    ایجاد
+                  </span>
+                </a>
+              </div>
+              <div class="twm-company-approch-outer">
+                <div class="twm-company-approch">
+                  <div class="twm-jobs-list-wrap" *ngIf="userLanguages.length>0">
+                    <ul>
+                      <li *ngFor="let language of userLanguages">
+                        <div class="twm-jobs-list-style1 mb-2">
+                          <div class="twm-mid-content fit-width">
+                            <div>
+                              <div>
+                                <span class="twm-mid-content-title">
+                                  <i class="feather-check"></i>
+                                  نام زبان
+                                </span>
+                                :{{language.language}}
+                              </div>
+                              <div>
+                                <span class="twm-mid-content-title">
+                                  <i class="feather-check"></i>
+                                  سطح تسلط
+                                </span>
+                                :{{language.level}}
+                              </div>
+                            </div>
+                          </div>
+                          <div class="twm-left-content">
+                            <a (click)="languageModal(language)" class="twm-jobs-category green m-1">
+                              <span class="twm-bg-green">
+                                <i class="fa fa-edit"></i>
+                                ویرایش
+                              </span>
+                            </a>
+                            <a (click)="deleteLanguage(language.id)" class="twm-jobs-category brown m-1">
+                              <span class="twm-bg-brown">
+                                <i class="fa fa-trash"></i>
+                                حذف
+                              </span>
+                            </a>
+                          </div>
+                        </div>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="skills" role="tabpanel">
+            <div class="twm-right-section-panel site-bg-gray">
+              <div class="text-right m-2  mb-3">
+                <div class="row col-md-12">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>مهارت و تخصص ها</label>
+                      <div class="ls-inputicon-box">
+                        <select2 placeholder="مهارت و تخصص ها"
+                                 [data]="skills"
+                                 class="btn dropdown-toggle btn-light form-control"
+                                 (update)="setOption(12,$event)"
+                                 [value]="skillId">
+                        </select2>
+                        <i class="fs-input-icon fa fa-light fa-list"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xl-4 ">
+                    <div class="form-group">
+                      <label>سطح آشنایی</label>
+                      <div class="ls-inputicon-box">
+                        <select2 placeholder="سطح آشنایی"
+                                 [data]="skillLevels"
+                                 class="btn dropdown-toggle btn-light form-control"
+                                 (update)="setOption(13,$event)"
+                                 [value]="skillLevelId">
+                        </select2>
+                        <i class="fs-input-icon fa fa-light fa-list"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <a (click)="saveSkill()" style=" margin-top: 40px; display: block; width: 100px;" class="twm-jobs-category green">
+                      <span class="twm-bg-green">
+                        <i class="fa fa-plus"></i>
+                        ثبت
+                      </span>
+                    </a>
+                  </div>
+
+                </div>
+              </div>
+              <div class="twm-company-approch-outer">
+                <div class="twm-jobs-list-wrap twm-jobs-st5" *ngIf="userSkills.length>0">
+                  <div class="twm-jobs-category outline">
+                    <a *ngFor="let item of userSkills">
+                      {{item.softwareSkillName}} {{item.levelName}}
+                      <span (click)="deleteSkill(item.id)">
+                        <i style="color:#000000" class="fa fa-times "></i>
+                      </span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="priorities" role="tabpanel">
+            <div class="twm-right-section-panel site-bg-gray">
+              <form [formGroup]="priorityForm">
+                <div class="panel panel-default">
+                  <div class="panel-body wt-panel-body p-a20 m-b30 ">
+                    <div class="row">
+
+                      <div class="col-md-6">
+                        <div class="form-group city-outer-bx has-feedback">
+                          <label>شهر های مورد نظر</label>
+                          <div class="ls-inputicon-box">
+                            <select2 placeholder="شهر"
+                                     [data]="cities"
+                                     class="btn dropdown-toggle btn-light form-control"
+                                     [value]="selectedCities"
+                                     multiple="true"
+                                     [overlay]="false"
+                                     (update)="setOption(14,$event)">
+                            </select2>
+                            <i class="fs-input-icon fa fa-light fa-building"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group city-outer-bx has-feedback">
+                          <label>گروه بندی های مورد نظر</label>
+                          <div class="ls-inputicon-box">
+                            <select2 placeholder="گروه بندی"
+                                     [data]="jobGroups"
+                                     class="btn dropdown-toggle btn-light form-control"
+                                     [value]="selectedGroups"
+                                     multiple="true"
+                                     (update)="setOption(15,$event)"
+                                     resettable>
+                            </select2>
+                            <i class="fs-input-icon fa fa-light fa-building"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group city-outer-bx has-feedback">
+                          <label>نوع قرارد</label>
+                          <div class="ls-inputicon-box">
+                            <select2 placeholder="نوع قرارد"
+                                     [data]="contractTypes"
+                                     class="btn dropdown-toggle btn-light form-control"
+                                     [value]="contractTypeIds"
+                                     multiple="true"
+                                     (update)="setOption(16,$event)"
+                                     resettable>
+                            </select2>
+                            <i class="fs-input-icon fa fa-light fa-building"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6 ">
+                        <div class="form-group city-outer-bx has-feedback">
+                          <label>حقوق درخواستی</label>
+                          <div class="ls-inputicon-box">
+                            <select2 placeholder="حقوق درخواستی"
+                                     [data]="salaryRequesteds"
+                                     [value]="selectedSalaryRequestedId"
+                                     (update)="setOption(17,$event)"
+                                     class="btn dropdown-toggle btn-light form-control"
+                                     resettable>
+                            </select2>
+                            <i class="fs-input-icon fa fa-light fa-dollar-sign"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group city-outer-bx has-feedback">
+                          <label>مزایا شغلی</label>
+                          <div class="ls-inputicon-box">
+                            <select2 placeholder="مزایا شغلی"
+                                     [data]="jobBenefits"
+                                     class="btn dropdown-toggle btn-light form-control"
+                                     [value]="jobBenefitsIds"
+                                     multiple="true"
+                                     (update)="setOption(18,$event)"
+                                     resettable>
+                            </select2>
+                            <i class="fs-input-icon fa fa-light fa-building"></i>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6">
+                        <div class="text-center">
+                          <a (click)="savePriority()" class="site-button">
+                            <i class="fs-input-icon fas fa-save"></i>
+                            ذخیره
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-modal id="education-save">
+  <div class="modal-header">
+    <h5 class="modal-title">سوابق تحصیلی</h5>
+    <button type="button" class="btn-close" (click)="modalService.close();"></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="saveEducationForm">
+      <input type="hidden" name="id" formControlName="id">
+      <div class="panel panel-default">
+        <div class="panel-body wt-panel-body">
+          <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-12">
+              <div class="form-group">
+                <label>رشته تحصیلی</label>
+                <div class="ls-inputicon-box">
+                  <input class="form-control" placeholder="رشته تحصیلی" name="field" formControlName="field">
+                  <i class="fs-input-icon fa fa-light fa-users"></i>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-12">
+              <div class="form-group">
+                <label>نام دانشگاه/موسسه آموزشی</label>
+                <div class="ls-inputicon-box">
+                  <input class="form-control" placeholder="نام دانشگاه/موسسه آموزشی" name="universityName" formControlName="universityName">
+                  <i class="fs-input-icon fa fa-light fa-users"></i>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-12">
+              <div class="form-group">
+                <label>مقطع تحصیلی</label>
+                <div class="ls-inputicon-box">
+                  <select2 placeholder="مقطع تحصیلی"
+                           [data]="degrees"
+                           class="btn dropdown-toggle btn-light form-control"
+                           (update)="setOption(6,$event)"
+                           [value]="degreeId">
+                  </select2>
+                  <i class="fs-input-icon fa fa-light fa-list"></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-6 col-lg-6 col-md-12">
+              <div class="form-group city-outer-bx has-feedback">
+                <label>تاریخ شروع </label>
+                <div class="ls-inputicon-box">
+                  <ng-persian-datepicker>
+                    <input class="form-control" placeholder="تاریخ شروع " name="startDate" formControlName="startDate">
+                  </ng-persian-datepicker>
+                  <i class="fs-input-icon fa fa-light fa-calendar"></i>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-12">
+              <div class="form-group city-outer-bx has-feedback">
+                <label>تاریخ پایان </label>
+                <div class="ls-inputicon-box">
+                  <ng-persian-datepicker>
+                    <input class="form-control" placeholder="تاریخ پایان" name="endDate" formControlName="endDate">
+                  </ng-persian-datepicker>
+                  <i class="fs-input-icon fa fa-light fa-calendar"></i>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-12">
+              <div class="form-group">
+                <label>معدل</label>
+                <div class="ls-inputicon-box">
+                  <input class="form-control" placeholder="معدل" name="score" formControlName="score">
+                  <i class="fs-input-icon fa fa-light fa-users"></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="form-group city-outer-bx has-feedback">
+                <label>توضیحات</label>
+                <div class="ls-inputicon-box">
+                  <textarea rows="2" class="form-control" name="description" formControlName="description"></textarea>
+                  <i class="fs-input-icon fas fa-map-marker-alt"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <a (click)="saveEducation()" class="btn btn-secondary">
+      ذخیره
+    </a>
+    <button type="button" class="btn btn-danger" (click)="modalService.close();">
+      انصراف
+    </button>
+  </div>
+</app-modal>
+<app-modal id="job-save">
+  <div class="modal-header">
+    <h5 class="modal-title">سوابق شغلی</h5>
+    <button type="button" class="btn-close" (click)="modalService.close();"></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="saveJobForm">
+      <input type="hidden" name="id" formControlName="id">
+      <div class="panel panel-default">
+        <div class="panel-body wt-panel-body">
+          <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-12">
+              <div class="form-group">
+                <label>عنوان شغل </label>
+                <div class="ls-inputicon-box">
+                  <input class="form-control" placeholder="عنوان شغل" name="jobTitle" formControlName="jobTitle">
+                  <i class="fs-input-icon fa fa-light fa-users"></i>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-12">
+              <div class="form-group">
+                <label>نام شرکت</label>
+                <div class="ls-inputicon-box">
+                  <input class="form-control" placeholder="نام شرکت" name="companyName" formControlName="companyName">
+                  <i class="fs-input-icon fa fa-light fa-users"></i>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-12">
+              <div class="form-group">
+                <label>سمت سازمانی</label>
+                <div class="ls-inputicon-box">
+                  <select2 placeholder="سمت سازمانی"
+                           [data]="jobPositions"
+                           class="btn dropdown-toggle btn-light form-control"
+                           (update)="setOption(7,$event)"
+                           [value]="positionId">
+                  </select2>
+                  <i class="fs-input-icon fa fa-light fa-list"></i>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-12">
+              <div class="form-group">
+                <label>شهر</label>
+                <div class="ls-inputicon-box">
+                  <select2 placeholder="شهر"
+                           [data]="cities"
+                           class="btn dropdown-toggle btn-light form-control"
+                           (update)="setOption(8,$event)"
+                           [value]="jobCityId">
+                  </select2>
+                  <i class="fs-input-icon fa fa-light fa-list"></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-6 col-lg-6 col-md-12">
+              <div class="form-group">
+                <label>گروه شغلی</label>
+                <div class="ls-inputicon-box">
+                  <select2 placeholder="گروه شغلی"
+                           [data]="jobGroups"
+                           class="btn dropdown-toggle btn-light form-control"
+                           (update)="setOption(9,$event)"
+                           [value]="jobGroupId">
+                  </select2>
+                  <i class="fs-input-icon fa fa-light fa-list"></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-6 col-lg-6 col-md-12">
+              <div class="form-group city-outer-bx has-feedback">
+                <label>تاریخ آغاز فعالیت</label>
+                <div class="ls-inputicon-box">
+                  <ng-persian-datepicker>
+                    <input class="form-control" placeholder="تاریخ آغاز فعالیت" name="startDate" formControlName="startDate">
+                  </ng-persian-datepicker>
+                  <i class="fs-input-icon fa fa-light fa-calendar"></i>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-12">
+              <div class="form-group city-outer-bx has-feedback">
+                <label>تاریخ اتمام فعالیت</label>
+                <div class="ls-inputicon-box">
+                  <ng-persian-datepicker>
+                    <input class="form-control" placeholder="تاریخ اتمام فعالیت" name="endDate" formControlName="endDate">
+                  </ng-persian-datepicker>
+                  <i class="fs-input-icon fa fa-light fa-calendar"></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-6 col-lg-6 col-md-12">
+              <div class="form-group city-outer-bx has-feedback">
+                <label>توضیحات</label>
+                <div class="ls-inputicon-box">
+                  <textarea rows="2" class="form-control" name="description" formControlName="description"></textarea>
+                  <i class="fs-input-icon fas fa-map-marker-alt"></i>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-12 mt-2">
+              <input type="checkbox" name="isCurrentJob" formControlName="isCurrentJob" class="form-check-input">
+              <label class="form-check-label p-1" for="rememberMe">
+                در حال حاضر مشغول هستم
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <a (click)="saveJob()" class="btn btn-secondary">
+      ذخیره
+    </a>
+    <button type="button" class="btn btn-danger" (click)="modalService.close();">
+      انصراف
+    </button>
+  </div>
+</app-modal>
+<app-modal id="language-save">
+  <div class="modal-header">
+    <h5 class="modal-title">زبان ها</h5>
+    <button type="button" class="btn-close" (click)="modalService.close();"></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="saveLanguageForm">
+      <input type="hidden" name="id" formControlName="id">
+      <div class="panel panel-default">
+        <div class="panel-body wt-panel-body">
+          <div class="row">
+            <div class=" col-md-12">
+              <div class="form-group">
+                <label>نام زبان</label>
+                <div class="ls-inputicon-box">
+                  <select2 placeholder="نام زبان"
+                           [data]="languages"
+                           class="btn dropdown-toggle btn-light form-control"
+                           (update)="setOption(10,$event)"
+                           [value]="languageId">
+                  </select2>
+                  <i class="fs-input-icon fa fa-light fa-list"></i>
+                </div>
+              </div>
+            </div>
+
+            <div class=" col-md-12">
+              <div class="form-group">
+                <label>سطح تسلط</label>
+                <div class="ls-inputicon-box">
+                  <select2 placeholder="سطح تسلط"
+                           [data]="languageLevels"
+                           class="btn dropdown-toggle btn-light form-control"
+                           (update)="setOption(11,$event)"
+                           [value]="languageLevelId">
+                  </select2>
+                  <i class="fs-input-icon fa fa-light fa-list"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <a (click)="saveLanguage()" class="btn btn-secondary">
+      ذخیره
+    </a>
+    <button type="button" class="btn btn-danger" (click)="modalService.close();">
+      انصراف
+    </button>
+  </div>
+</app-modal>

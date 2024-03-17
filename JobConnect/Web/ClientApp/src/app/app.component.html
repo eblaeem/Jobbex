@@ -1,0 +1,18 @@
+<body >
+  <div class="loading-area">
+    <div class="loading-box"></div>
+    <div class="loading-pic">
+      <div class="wrapper">
+        <div class="cssload-loader"></div>
+      </div>
+    </div>
+  </div>
+  <div class="page-wraper">
+    <app-nav-menu></app-nav-menu>
+    <div class="page-content" [@routeAnimations]="prepareRoute(outlet)">
+      <div class="twm-home2-banner-section site-bg-gray bg-cover" style="padding-top: 100px"></div>
+      <router-outlet #outlet="outlet"></router-outlet>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</body>

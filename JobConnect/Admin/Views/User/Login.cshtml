@@ -1,0 +1,108 @@
+﻿@{
+    Layout = null;
+}
+@model ViewModel.User.CreateLoginAdmin
+<!DOCTYPE html>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<html lang="en" dir="rtl">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="" />
+    <meta name="author" content="" />
+    <meta name="robots" content="" />
+    <meta name="description" content="" />
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+
+    <title>آگهی استخدام/بازاریابی</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="~/css/font-awesome.min.css">
+    <link href="~/css/notyf.min.css" rel="stylesheet" />
+    <link href="~/css/site.css" rel="stylesheet" />
+    <link href="~/css/login.css" rel="stylesheet" />
+
+    <script src="\js\jquery-3.6.0.min.js"></script>
+    <script src="\js\popper.min.js"></script>
+    <script src="\js\bootstrap.min.js"></script>
+    <script src="~/js/jquery.blockUI.js"></script>
+    <script src="~/js/system.js"></script>
+    <script src="~/js/notyf.min.js"></script>
+</head>
+<body>
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-12 col-lg-10">
+                    <div class="wrap d-md-flex">
+                        <div class="login-wrap p-4 p-md-5">
+                            <div class="panel box-shadow-lg p-3">
+                                <div class="panel-body">
+                                    <form id="login-form">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="form-group mb-3 ls-inputicon-box">
+                                                   
+                                                    <input placeholder="نام کاربری" type="text" class="form-control" asp-for="UserName">
+                                                    <i class="fs-input-icon fa fa-asterisk "></i>
+                                                </div>
+                                                <div class="form-group ls-inputicon-box">
+                                                    
+                                                    <input placeholder="رمز عبور" type="password" class="form-control" asp-for="Password">
+                                                    <i class="fs-input-icon fa fa-asterisk "></i>
+                                                </div>
+                                                <div class="row form-group">
+                                                    <div class="col-md-6 ls-inputicon-box">
+                                                        <input asp-for="Captcha" class="form-control">
+                                                        <i class="fs-input-icon fa fa-asterisk "></i>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <img alt="captcha" id="captcha-image" style="margin-bottom: 4px;">
+
+                                                        <a class="btn-sm" id="captcha">
+                                                            <img class="reload-icon" style="max-width:50px;" src="/images/reload-icon.png" />
+                                                        </a>
+                                                    </div>
+                                                </div>
+
+                                                <div class=" form-group mt-2">
+                                                    <input type="checkbox" name="rememberMe">
+                                                    <label class="form-check-label rem-forgot p-1" for="rememberMe">
+                                                        مرا به خاطر بسپار
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <a id="submit" class="btn btn-success  mt-5 ">
+                                                    <i class="fa fa-sign-in-alt"></i>
+                                                    ورود
+                                                </a>
+
+                                                <a style="float:left" href="/user/register" class="btn btn-outline-success  mt-5 ">
+                                                    <i class="fa fa-sign-in-alt"></i>
+                                                    ثبت نام
+                                                </a>
+                                            </div>
+
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="img" style="background-image: url(/images/background/pattern2.jpg); ">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script type="systemjs-module" src="/dist/login.js"></script>
+</body>
+</html>
+
+
+

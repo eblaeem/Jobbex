@@ -1,0 +1,147 @@
+/*===GENERAL===*/
+.site-text-primary {
+  color: #eca315;
+}
+
+.site-bg-gray {
+  background-color: #fffaf0;
+}
+
+.site-bg-light-purple {
+  background-color: #fffaf0;
+}
+
+.footer-light {
+  color: #2a2e3a;
+  background-color: #fffaf0;
+}
+.footer-light .ftr-nw-content .ftr-nw-title {
+  font-size: 20px;
+  color: #2a2e3a;
+}
+.footer-light .ftr-nw-content .ftr-nw-form .ftr-nw-subcribe-btn {
+  background-color: #eca315;
+}
+.footer-light .widget-title {
+  color: #eca315;
+}
+.footer-light .social-icons {
+  margin: 0px;
+}
+.footer-light .social-icons li a {
+  color: #eca315;
+}
+.footer-light .social-icons li a:hover {
+  color: #2a2e3a;
+}
+.footer-light .widget_services ul li a:hover {
+  color: #eca315;
+}
+
+/*Banner home 10*/
+.twm-home-10-banner-section.twm-bne-10-skew:before {
+  background-color: #eca315;
+}
+.twm-home-10-banner-section .row .twm-bnr-left-section .twm-bnr-title-large-thin {
+  color: #2a2e3a;
+}
+.twm-home-10-banner-section .row .twm-bnr-left-section .twm-bnr-title-large-bold {
+  color: #eca315;
+}
+.twm-home-10-banner-section .twm-bnr-popular-search {
+  color: #2a2e3a;
+}
+.twm-home-10-banner-section .twm-bnr-popular-search .twm-title {
+  color: #2a2e3a;
+}
+.twm-home-10-banner-section .twm-bnr-popular-search a {
+  color: #2a2e3a;
+}
+.twm-home-10-banner-section .twm-bnr-popular-search a:hover {
+  color: #eca315;
+}
+.twm-home-10-banner-section .twm-bnr-right-section .bnr-media-wrap {
+  background-color: #eca315;
+}
+.twm-home-10-banner-section .twm-bnr-right-section .bnr-media-wrap .semi-circle {
+  background-color: #2a2e3a;
+}
+
+.header-style-3 .header-nav-btn-section .twm-nav-btn-right .twm-nav-post-a-job {
+  background-color: #2a2e3a;
+}
+.header-style-3 .header-nav-btn-section .twm-nav-btn-left .twm-nav-sign-up {
+  color: #eca315;
+  background-color: #fffaf0;
+}
+.header-style-3 .header-search a.header-search-icon {
+  color: #2a2e3a;
+}
+.header-style-3 .navbar-toggler .icon-bar {
+  background: #2a2e3a;
+}
+.header-style-3 .header-nav .nav > li:hover > a {
+  color: #eca315;
+}
+.header-style-3 .header-nav .nav > li .sub-menu li:hover > a {
+  color: #eca315;
+}
+
+.small-qb-box {
+  background-color: #2a2e3a;
+}
+.small-qb-box span.qb-2 {
+  background-color: #eca315;
+}
+.small-qb-box span.qb-3 {
+  background-color: #eca315;
+}
+
+.site-button {
+  background-color: #2a2e3a;
+}
+
+.wt-small-separator {
+  color: #eca315;
+}
+
+.description-list li i {
+  background-color: #eca315;
+}
+
+.job-categories-block-2 {
+  box-shadow: 0px 0px 25px rgba(56, 152, 226, 0.3);
+}
+.job-categories-block-2:after {
+  background-color: #eca315;
+}
+.job-categories-block-2:before {
+  background-color: #eca315;
+}
+.job-categories-block-2 .twm-media [class*=flaticon-] {
+  color: #eca315;
+}
+.job-categories-block-2 .twm-content .twm-jobs-available {
+  color: #eca315;
+  background-color: #fffaf0;
+}
+.job-categories-block-2:hover {
+  background-color: #eca315;
+}
+
+.twm-explore-content-2 {
+  background-color: #2a2e3a;
+}
+.twm-explore-content-2 .twm-explore-top-section .twm-title-large p {
+  color: #fff;
+}
+.twm-explore-content-2 .twm-explore-top-section .twm-read-more .site-button {
+  color: #eca315;
+  text-shadow: 0 0 0 #eca315, 400px 0 0 #eca315;
+}
+.twm-explore-content-2 .twm-explore-top-section .twm-read-more .site-button i {
+  color: #eca315;
+}
+.twm-explore-content-2 .twm-explore-media-wrap2:after {
+  box-shadow: 20px 20px 0px #eca315 inset;
+}/*# sourceMappingURL=skin-1.css.map */

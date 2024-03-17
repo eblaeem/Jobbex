@@ -1,0 +1,6 @@
+{
+  "imports": {
+    "register": "/dist/register.js",
+    "login": "/dist/login.js"
+  }
+}

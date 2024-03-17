@@ -1,0 +1,10 @@
+﻿@using DNTPersianUtils.Core
+@model ViewModel.LogModel
+
+Message:@Model.Message
+DateTime:@DateTime.Now.ToShortPersianDateTimeString()
+ApplicationName:@Model.ApplicationName
+Url:@Model.MethodeName
+IpAddress:@Model.IpAddress
+StackTrace:@Model.StackTrace
+Token:@Model.AccessToken

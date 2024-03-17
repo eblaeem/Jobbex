@@ -1,0 +1,5 @@
+<div [innerHTML]="currentText">
+</div>
+<a *ngIf="currentText" [class.hidden]="hideToggle" (click)="toggleView()">
+  {{isCollapsed? 'بیشتر':'کمتر'}}  ...
+</a>

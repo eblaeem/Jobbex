@@ -1,0 +1,23 @@
+﻿@model ViewModel.User.TwoFactorSendCode
+@{
+    Layout = "_EmailsLayout.cshtml";
+}
+&nbsp; با سلام
+<br />
+&nbsp;کد جدید اعتبارسنجی دو مرحله‌ای شما عبارت‌است از:
+<br />
+<div align="center" dir="rtl" style="font-family: Tahoma; font-size: 9pt">
+    <div align="center" dir="ltr">
+        @Model.Token
+    </div>
+</div>
+<br />
+<br />
+&nbsp;با احترام<br />
+&nbsp;<a style="direction:ltr">@Model.EmailSignature</a>
+<br />
+<span lang="fa" dir="ltr">
+    &nbsp;&nbsp;
+    @Model.MessageDateTime
+</span>
+<br />

@@ -1,0 +1,146 @@
+﻿@model ViewModel.Dashboard.CompanyDashboard
+@inject Microsoft.Extensions.Options.IOptions<ViewModel.Setting.AppSettings> appSetting
+
+<style>
+    #active-jobs{
+        height:450px;
+    }
+    .twm-jobs-list-style1 .twm-right-content{
+        width:unset !important;
+    }
+</style>
+<div class="twm-dash-b-blocks mb-2">
+    <div class="row">
+        <div class="col-xl-3 col-lg-6 col-md-12 mb-3">
+            <div class="panel panel-default">
+                <div class="panel-body wt-panel-body gradi-1 dashboard-card ">
+                    <div class="wt-card-wrap">
+                        <div class="wt-card-icon"><i class="far fa-address-book"></i></div>
+                        <div class="wt-card-right wt-total-active-listing counter ">@Model.JobCount</div>
+                        <div class="wt-card-bottom ">
+                            <h4 class="m-b0">تعداد آگهی ها</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-lg-6 col-md-12 mb-3">
+            <div class="panel panel-default">
+                <div class="panel-body wt-panel-body gradi-2 dashboard-card ">
+                    <div class="wt-card-wrap">
+                        <div class="wt-card-icon"><i class="far fa-file-alt"></i></div>
+                        <div class="wt-card-right  wt-total-listing-view counter ">@Model.ActiveJobCount</div>
+                        <div class="wt-card-bottom">
+                            <h4 class="m-b0">آگهی های فعال</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-lg-6 col-md-12 mb-3">
+            <div class="panel panel-default">
+                <div class="panel-body wt-panel-body gradi-3 dashboard-card ">
+                    <div class="wt-card-wrap">
+                        <div class="wt-card-icon"><i class="far fa-envelope"></i></div>
+                        <div class="wt-card-right wt-total-listing-review counter ">@Model.UserRequestCount</div>
+                        <div class="wt-card-bottom">
+                            <h4 class="m-b0">رزومه های ارسال شده</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-lg-6 col-md-12 mb-3">
+            <div class="panel panel-default">
+                <div class="panel-body wt-panel-body gradi-4 dashboard-card ">
+                    <div class="wt-card-wrap">
+                        <div class="wt-card-icon"><i class="far fa-bell"></i></div>
+                        <div class="wt-card-right wt-total-listing-bookmarked counter ">@Model.UserRequestTodayCount</div>
+                        <div class="wt-card-bottom">
+                            <h4 class="m-b0">رزومه های امروز</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="twm-pro-view-chart-wrap col-md-8">
+        <div class="panel panel-default">
+            <div class="panel-heading wt-panel-heading p-a10">
+                <h4 class="panel-tittle m-a0">
+                    <i class="fa fa-list"></i>
+                    آگهی های فعال
+                </h4>
+            </div>
+            <div class="panel-body wt-panel-body p-a10 m-b20 ">
+                <div id="active-jobs">
+                    <ul class="row col-md-12" >
+                        @foreach (var item in Model.ActiveJobs)
+                        {
+                            <li class="col-md-6 float-end ">
+                                <div class="twm-jobs-list-style1 mb-2">
+                                    <div class="twm-mid-content" style="padding-left:2px">
+                                        <a href="/job/save/@item.JobId" class="twm-job-title">
+                                            @if (item.JobTitle.Length > 30)
+                                            {
+                                                <span title="@item.JobTitle">
+                                                    @item.JobTitle.Substring(0, 27)
+                                                    <span>...</span>
+                                                </span>
+                                            }
+                                            else
+                                            {
+                                                <span>@item.JobTitle</span>
+                                            }
+                                        </a>
+                                        <p class="twm-job-address">
+                                            @item.JobGroupName
+                                        </p>
+                                        <a href="@appSetting.Value.ApplicatioWebUrl/job/@item.JobId" target="_blank" class="twm-job-websites site-text-primary">
+                                            مشاهده در سایت
+                                        </a>
+                                    </div>
+                                    <div class="twm-right-content">
+
+                                        <div class="twm-jobs-category green">
+                                            <a href="/JobRequest/Detail/@item.JobId">
+                                                <span class="twm-bg-green" title="تعداد درخواست">
+                                                    <i class="fa fa-user"></i>
+                                                    @item.UserRequestCount
+                                                </span>
+                                            </a>
+                                        </div>
+                                        <div class="twm-jobs-amount"> @item.DateTimeString</div>
+                                        <a title="ویرایش" href="/job/save/@item.JobId" class="twm-jobs-browse site-text-primary">
+                                            <i class="fa fa-edit"></i>
+                                            ویرایش
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="twm-pro-view-chart-wrap col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading wt-panel-heading p-a10">
+                <h4 class="panel-tittle m-a0">
+                    <i class="fa fa-list"></i>
+                    تیکت های پشتیبانی
+                </h4>
+            </div>
+            <div class="panel-body wt-panel-body p-a10 m-b20 ">
+                <div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="systemjs-module" src="/dist/home.js"></script>

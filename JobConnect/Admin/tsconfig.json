@@ -1,0 +1,16 @@
+﻿{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "preserveWatchOutput": true,
+    "lib": [ "ES2022", "dom" ],
+    "target": "es5",
+    "module": "System",
+    "sourceMap": true,
+    "removeComments": true,
+    "downlevelIteration": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "allowUnreachableCode": false
+  }
+}
